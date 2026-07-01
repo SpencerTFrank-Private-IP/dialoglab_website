@@ -15,6 +15,10 @@
     background-size: cover;
     background-attachment: fixed;
   }
+
+  h3 {
+    font-weight: 600;
+  }
 }
 
 @layer components {
