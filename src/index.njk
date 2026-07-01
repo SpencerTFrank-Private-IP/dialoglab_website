@@ -1,0 +1,275 @@
+---
+layout: base.njk
+title: Dialog Lab
+description: Be heard
+---
+<div class="w-full flex flex-col items-center text-center">
+
+  <!-- Hero -->
+  <section id="home" class="snap-start min-h-screen w-full flex flex-col md:flex-row items-center justify-start md:justify-center gap-8 md:gap-12 px-8 sm:px-10 md:px-16 pt-28 md:pt-24 pb-12">
+    <div class="w-40 sm:w-56 md:hidden">
+      <img src="/assets/images/DL-Mark-Stacked.svg" alt="" class="w-full h-full object-contain" />
+    </div>
+
+    <div class="flex flex-col items-center md:items-start text-center md:text-left gap-5 md:gap-8 max-w-[32rem]">
+      <h1 class="text-[1.5em] sm:text-[1.875em] md:text-[2.375em] leading-snug">
+        The <em class="italic">easiest</em> way to have a <em class="italic">civil</em> chat with someone on the other side
+      </h1>
+    </div>
+
+    <div class="hidden md:block md:flex-1 md:h-[28rem] md:max-w-md">
+      <img src="/assets/images/DL-Mark-Stacked.svg" alt="" class="w-full h-full object-contain" />
+    </div>
+  </section>
+
+  <!-- Why Dialog Lab -->
+  <section id="why-dialog-lab" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-5 md:gap-8 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
+    <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">Why Dialog Lab</h3>
+
+    <div class="flex flex-col items-start gap-4 max-w-[30rem] w-full text-left">
+      <p class="text-[1em] md:text-[1.25em] leading-snug">
+        We're living in a tense world - and that makes talking about divisive topics very difficult.
+      </p>
+      <p class="text-[1em] md:text-[1.25em] leading-snug">
+        We avert conflict by staying in our bubble and avoid talking to those with different views.
+      </p>
+      <p class="text-[1em] md:text-[1.25em] leading-snug">
+        Over time, the divide widens, and it becomes ever more challenging to find, approach, and talk to people that see the world differently.
+      </p>
+      <p class="text-[1em] md:text-[1.25em] leading-snug">
+        We don't get to experience the immense benefits of sharing and connecting.
+      </p>
+      <p class="text-[1em] md:text-[1.25em] leading-snug">
+        That's why we built Dialog Lab - A place where you can hear diverse perspectives, be heard, and connect. 
+      </p>
+    </div>
+  </section>
+
+  <!-- How the App Works: Step 1 -->
+  <section id="how-it-works" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-6 md:gap-12 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
+    <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">How the App Works</h3>
+
+    <div class="flex flex-col items-center gap-4 md:gap-6 w-full">
+      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
+        1. Choose your position on the topics that are important to you.
+      </p>
+
+      <div
+        x-data="{
+          images: [
+            'https://i.imgur.com/oBphgtZ.png',
+            'https://i.imgur.com/OU4ULIO.png',
+            'https://i.imgur.com/IQgUy4y.png',
+            'https://i.imgur.com/VuOCkEq.png',
+            'https://i.imgur.com/PiiRnPT.png',
+            'https://i.imgur.com/HaYHho1.png',
+            'https://i.imgur.com/3wYfEFj.png',
+          ],
+          current: 0,
+          init() {
+            setInterval(() => {
+              this.current = (this.current + 1) % this.images.length;
+            }, 3400);
+          }
+        }"
+        class="relative w-full max-w-sm h-56"
+      >
+        <template x-for="(img, i) in images" :key="i">
+          <img
+            :src="img"
+            alt=""
+            x-show="i === current"
+            x-transition:enter="transition ease-out duration-500"
+            x-transition:enter-start="opacity-0 scale-95"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-95"
+            class="absolute inset-0 w-full h-full object-contain rounded-2xl"
+          />
+        </template>
+
+        <div class="absolute -bottom-6 inset-x-0 flex justify-center gap-1.5">
+          <template x-for="(img, i) in images" :key="i">
+            <span
+              class="w-1.5 h-1.5 rounded-full transition-colors duration-300"
+              :class="i === current ? 'bg-brand' : 'bg-brand/25'"
+            ></span>
+          </template>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How the App Works: Step 2 -->
+  <section id="how-it-works-step-2" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-6 md:gap-12 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
+    <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">How the App Works</h3>
+
+    <div class="flex flex-col items-center gap-4 md:gap-6 w-full">
+      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
+        2. We quickly match you with someone on the other side for a messaging chat. To keep things civil and constructive we use AI to moderate.
+      </p>
+
+      <div
+        x-data="{
+          rows: [
+            { side: 'left',  name: null,           text: 'I love cake best. Why did you choose pie?' },
+            { side: 'right', name: null,           text: 'Cake is mostly air. Pie is superior.' },
+            { side: 'left',  name: null,           text: 'You must be crazy to believe that!' },
+            { side: 'left',  name: 'AI Moderator', text: `Let's focus on the idea rather than the person. What part of their argument do you disagree with?` },
+          ],
+          shown: 0,
+          cycle() {
+            if (this.shown < this.rows.length) {
+              this.shown++;
+              setTimeout(() => this.cycle(), this.shown < this.rows.length ? 1500 : 5000);
+            } else {
+              this.shown = 0;
+              setTimeout(() => this.cycle(), 1200);
+            }
+          },
+          isLastInRun(i) {
+            const next = this.rows[i + 1];
+            return !next || next.side !== this.rows[i].side || next.name;
+          },
+          init() { this.cycle(); }
+        }"
+        class="flex flex-col justify-start gap-3 w-full max-w-lg min-h-[22rem] sm:min-h-[18rem] md:min-h-[16rem] text-left font-system"
+      >
+        <template x-for="(row, i) in rows" :key="i">
+          <div
+            class="flex flex-col w-full"
+            :class="row.side === 'right' ? 'items-end' : 'items-start'"
+            x-show="i < shown"
+            x-transition:enter="transition ease-out duration-600"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+          >
+            <span x-show="row.name" x-text="row.name" class="text-[13px] font-semibold text-indigo-600 mb-1"></span>
+            <div
+              class="relative px-3.5 py-2.5 text-[16px] leading-snug break-words shadow-sm"
+              :class="{
+                'max-w-[75%] rounded-2xl bg-gradient-to-b from-sky-100 to-sky-200 text-neutral-900': row.side === 'left' && !row.name,
+                'max-w-[75%] rounded-2xl bg-gradient-to-b from-neutral-200 to-neutral-300 text-neutral-900': row.side === 'right' && !row.name,
+                'chat-bubble-tail chat-bubble-tail-left': row.side === 'left' && !row.name && isLastInRun(i),
+                'chat-bubble-tail chat-bubble-tail-right': row.side === 'right' && !row.name && isLastInRun(i),
+                'max-w-full w-full rounded-xl bg-gradient-to-br from-indigo-100 to-indigo-200 text-neutral-900': row.name,
+              }"
+              x-text="row.text"
+            ></div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Moderation Principles -->
+  <section id="ai-moderation-principles" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-5 md:gap-8 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
+    <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">AI Moderation Principles</h3>
+
+    <div class="flex flex-col items-start gap-3 max-w-[30rem] w-full text-left">
+      <ul class="flex flex-col gap-3 text-[1em] md:text-[1.25em] leading-snug list-disc pl-5">
+        <li>Must serve the users by enforcing and facilitating civil conversation</li>
+        <li>Must be direct and transparent in communication</li>
+        <li>Must be unbiased and never take a side in an argument</li>
+        <li>Must never try to persuade</li>
+        <li>Must never fact-check</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Mission + signup -->
+  <section id="join-beta" class="snap-start min-h-screen w-full flex flex-col items-center justify-between gap-4 md:gap-6 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-8">
+  <div class="flex flex-col items-start gap-1 max-w-[30rem] w-full text-left">
+    <h3 class="text-[1.375em] md:text-[1.75em] leading-snug text-center w-full">Join the Beta Test</h3>
+    <p class="text-[1em] md:text-[1.25em] leading-snug mt-4">
+      We're recruiting a select group to be included in our beta app testing program. To be considered, you must be open to civil conversations via messaging with people who see things differently.
+    </p>
+    <p class="text-[1em] md:text-[1.25em] leading-snug mt-4">
+      Users will be anonymous to eachother and all information will be held confidential.
+    </p>
+
+    <form
+      x-data="{
+        status: 'idle',
+        errorMessage: '',
+        async submit(event) {
+          this.status = 'loading';
+          this.errorMessage = '';
+          const form = event.target;
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' },
+            });
+            if (res.ok) {
+              this.status = 'success';
+              form.reset();
+            } else {
+              const json = await res.json().catch(() => null);
+              this.errorMessage = json && json.errors
+                ? json.errors.map(e => e.message).join(', ')
+                : 'Something went wrong. Please try again.';
+              this.status = 'error';
+            }
+          } catch (e) {
+            this.errorMessage = 'Something went wrong. Please check your connection and try again.';
+            this.status = 'error';
+          }
+        }
+      }"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+      @submit.prevent="submit($event)"
+      class="w-full flex flex-col gap-3.5 mt-7"
+    >
+      <template x-if="status === 'success'">
+        <p class="text-[1.25em] leading-snug text-green-700">
+          Thank you for applying to join the beta. Please share this link with others that may be interested: joindialoglab.com
+        </p>
+      </template>
+
+      <template x-if="status !== 'success'">
+        <div class="flex flex-col gap-3.5">
+          <input type="text" name="name" placeholder="Name" maxlength="128" required
+            class="h-11 px-4 border border-brand placeholder-brand/55 outline-none text-[1em] md:text-[1.25em]" />
+
+          <input type="email" name="email" placeholder="Email" maxlength="128" required
+            class="h-11 px-4 border border-brand placeholder-brand/55 outline-none text-[1em] md:text-[1.25em]" />
+
+          <textarea name="message" placeholder="What are you hoping to get out of joining?" maxlength="16384" required
+            class="h-40 p-4 border border-brand placeholder-brand/55 outline-none text-[1em] md:text-[1.25em] leading-snug"></textarea>
+
+          <div class="flex items-center gap-4">
+            <input type="checkbox" name="consent" value="checked" required id="consent"
+              class="w-6 h-6 border border-brand accent-brand shrink-0" />
+            <label for="consent" class="text-[1em] md:text-[1.25em] leading-snug text-brand-dark">
+              I certify that I am 18 years or older.
+            </label>
+          </div>
+
+          <template x-if="status === 'error'">
+            <p class="text-red-600 text-[1em]" x-text="errorMessage"></p>
+          </template>
+
+          <div>
+            <button type="submit" :disabled="status === 'loading'"
+              class="h-10 px-5 bg-brand text-white text-[1.125em] md:text-[1.5em] disabled:opacity-35 disabled:cursor-default">
+              <span x-show="status !== 'loading'">Submit</span>
+              <span x-show="status === 'loading'">Sending…</span>
+            </button>
+          </div>
+        </div>
+      </template>
+    </form>
+  </div>
+
+    <!-- Footer -->
+    <div class="flex flex-col items-center gap-2">
+      <img src="/assets/images/DL-Mark-Stacked.svg" alt="" class="w-[7.25rem]" />
+      <p class="text-[0.625em]">2026</p>
+    </div>
+  </section>
+
+</div>
