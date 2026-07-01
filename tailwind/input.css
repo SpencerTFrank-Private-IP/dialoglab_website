@@ -41,4 +41,10 @@
     -webkit-mask-image: radial-gradient(circle at top right, transparent 0.65rem, black 0.66rem);
     mask-image: radial-gradient(circle at top right, transparent 0.65rem, black 0.66rem);
   }
+
+  .slideshow-img {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+  }
 }

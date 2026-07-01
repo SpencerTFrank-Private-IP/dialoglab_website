@@ -6,27 +6,23 @@ description: Be heard
 <div class="w-full flex flex-col items-center text-center">
 
   <!-- Hero -->
-  <section id="home" class="snap-start min-h-screen w-full flex flex-col md:flex-row items-center justify-start md:justify-center gap-8 md:gap-12 px-8 sm:px-10 md:px-16 pt-28 md:pt-24 pb-12">
-    <div class="w-40 sm:w-56 md:hidden">
+  <section id="home" class="snap-start w-full flex flex-col items-center justify-start gap-4 md:gap-6 px-4 sm:px-6 md:px-8 pt-28 md:pt-24 pb-12">
+    <div class="w-40 sm:w-56 md:w-64">
       <img src="{{ '/assets/images/DL-Mark-Stacked.svg' | url }}" alt="" class="w-full h-full object-contain" />
     </div>
 
-    <div class="flex flex-col items-center md:items-start text-center md:text-left gap-5 md:gap-8 max-w-[32rem]">
+    <div class="flex flex-col items-center text-center gap-4 md:gap-5 max-w-[32rem]">
       <h1 class="text-[1.5em] sm:text-[1.875em] md:text-[2.375em] leading-snug">
         The <em class="italic">easiest</em> way to have a <em class="italic">civil</em> chat with someone on the other side
       </h1>
     </div>
-
-    <div class="hidden md:block md:flex-1 md:h-[28rem] md:max-w-md">
-      <img src="{{ '/assets/images/DL-Mark-Stacked.svg' | url }}" alt="" class="w-full h-full object-contain" />
-    </div>
   </section>
 
   <!-- Why Dialog Lab -->
-  <section id="why-dialog-lab" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-5 md:gap-8 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
-    <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">Why Dialog Lab</h3>
+  <section id="why-dialog-lab" class="snap-start w-full max-w-[720px] mx-auto flex flex-col items-center justify-start gap-4 md:gap-5 px-4 sm:px-6 md:px-8 pt-16 pb-12 text-center">
+    <h3 class="w-full text-[1.375em] md:text-[1.75em] leading-snug">Why Dialog Lab</h3>
 
-    <div class="flex flex-col items-start gap-4 max-w-[30rem] w-full text-left">
+    <div class="flex flex-col items-center gap-3 w-full text-center">
       <p class="text-[1em] md:text-[1.25em] leading-snug">
         We're living in a tense world - and that makes talking about divisive topics very difficult.
       </p>
@@ -46,14 +42,10 @@ description: Be heard
   </section>
 
   <!-- How the App Works: Step 1 -->
-  <section id="how-it-works" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-6 md:gap-12 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
+  <section id="how-it-works" class="snap-start w-full flex flex-col items-center justify-start gap-4 md:gap-6 px-4 sm:px-6 md:px-8 pt-16 pb-12">
     <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">How the App Works</h3>
 
-    <div class="flex flex-col items-center gap-4 md:gap-6 w-full">
-      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
-        1. Choose your position on the topics that are important to you.
-      </p>
-
+    <div class="flex flex-col items-center w-full">
       <div
         x-data="{
           images: [
@@ -72,20 +64,21 @@ description: Be heard
             }, 3400);
           }
         }"
-        class="relative w-full max-w-sm h-56"
+        class="relative w-full max-w-sm lg:max-w-xl aspect-[12/7] overflow-hidden rounded-2xl mb-[calc(16pt+1.5rem)]"
       >
         <template x-for="(img, i) in images" :key="i">
           <img
             :src="img"
             alt=""
+            decoding="async"
             x-show="i === current"
             x-transition:enter="transition ease-out duration-500"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
             x-transition:leave="transition ease-in duration-300"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            class="absolute inset-0 w-full h-full object-contain rounded-2xl"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="slideshow-img absolute inset-0 w-full h-full object-contain"
           />
         </template>
 
@@ -98,18 +91,17 @@ description: Be heard
           </template>
         </div>
       </div>
+
+      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
+        1. Choose your position on the topics that are important to you.
+      </p>
     </div>
   </section>
 
   <!-- How the App Works: Step 2 -->
-  <section id="how-it-works-step-2" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-6 md:gap-12 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
-    <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">How the App Works</h3>
+  <section id="how-it-works-step-2" class="snap-start w-full flex flex-col items-center justify-start gap-4 md:gap-6 px-4 sm:px-6 md:px-8 pt-16 pb-12">
 
-    <div class="flex flex-col items-center gap-4 md:gap-6 w-full">
-      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
-        2. We quickly match you with someone on the other side for a messaging chat. To keep things civil and constructive we use AI to moderate.
-      </p>
-
+    <div class="flex flex-col items-center w-full">
       <div
         x-data="{
           rows: [
@@ -134,7 +126,7 @@ description: Be heard
           },
           init() { this.cycle(); }
         }"
-        class="flex flex-col justify-start gap-3 w-full max-w-lg min-h-[22rem] sm:min-h-[18rem] md:min-h-[16rem] text-left font-system"
+        class="flex flex-col justify-start gap-3 lg:gap-[1.125rem] w-full max-w-sm lg:max-w-xl h-[calc(14rem+100pt)] lg:h-[calc(21rem+100pt)] shrink-0 overflow-hidden mb-[16pt] text-left font-system"
       >
         <template x-for="(row, i) in rows" :key="i">
           <div
@@ -145,9 +137,9 @@ description: Be heard
             x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100"
           >
-            <span x-show="row.name" x-text="row.name" class="text-[13px] font-semibold text-indigo-600 mb-1"></span>
+            <span x-show="row.name" x-text="row.name" class="text-[13px] lg:text-[19.5px] font-semibold text-indigo-600 mb-1"></span>
             <div
-              class="relative px-3.5 py-2.5 text-[16px] leading-snug break-words shadow-sm"
+              class="relative px-3.5 py-2.5 lg:px-5 lg:py-4 text-[16px] lg:text-2xl leading-snug break-words shadow-sm"
               :class="{
                 'max-w-[75%] rounded-2xl bg-gradient-to-b from-sky-100 to-sky-200 text-neutral-900': row.side === 'left' && !row.name,
                 'max-w-[75%] rounded-2xl bg-gradient-to-b from-neutral-200 to-neutral-300 text-neutral-900': row.side === 'right' && !row.name,
@@ -160,11 +152,15 @@ description: Be heard
           </div>
         </template>
       </div>
+
+      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
+        2. We quickly match you with someone on the other side for a messaging chat. To keep things civil and constructive we use AI to moderate.
+      </p>
     </div>
   </section>
 
   <!-- AI Moderation Principles -->
-  <section id="ai-moderation-principles" class="snap-start min-h-screen w-full flex flex-col items-center justify-start md:justify-center gap-5 md:gap-8 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-12">
+  <section id="ai-moderation-principles" class="snap-start w-full flex flex-col items-center justify-start gap-4 md:gap-5 px-4 sm:px-6 md:px-8 pt-16 pb-12">
     <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">AI Moderation Principles</h3>
 
     <div class="flex flex-col items-start gap-3 max-w-[30rem] w-full text-left">
@@ -179,13 +175,13 @@ description: Be heard
   </section>
 
   <!-- Mission + signup -->
-  <section id="join-beta" class="snap-start min-h-screen w-full flex flex-col items-center justify-between gap-4 md:gap-6 px-6 sm:px-10 md:px-24 pt-28 md:pt-24 pb-8">
+  <section id="join-beta" class="snap-start w-full flex flex-col items-center gap-4 md:gap-6 px-4 sm:px-6 md:px-8 pt-16 pb-12">
   <div class="flex flex-col items-start gap-1 max-w-[30rem] w-full text-left">
     <h3 class="text-[1.375em] md:text-[1.75em] leading-snug text-center w-full">Join the Beta Test</h3>
-    <p class="text-[1em] md:text-[1.25em] leading-snug mt-4">
+    <p class="text-[1em] md:text-[1.25em] leading-snug mt-3">
       We're recruiting a select group to be included in our beta app testing program. To be considered, you must be open to civil conversations via messaging with people who see things differently.
     </p>
-    <p class="text-[1em] md:text-[1.25em] leading-snug mt-4">
+    <p class="text-[1em] md:text-[1.25em] leading-snug mt-3">
       Users will be anonymous to eachother and all information will be held confidential.
     </p>
 
@@ -222,7 +218,7 @@ description: Be heard
       action="https://formspree.io/f/xdarwboa"
       method="POST"
       @submit.prevent="submit($event)"
-      class="w-full flex flex-col gap-3.5 mt-7"
+      class="w-full flex flex-col gap-3.5 mt-5"
     >
       <template x-if="status === 'success'">
         <p class="text-[1.25em] leading-snug text-green-700">
@@ -255,7 +251,7 @@ description: Be heard
 
           <div>
             <button type="submit" :disabled="status === 'loading'"
-              class="h-10 px-5 bg-brand text-white text-[1.125em] md:text-[1.5em] disabled:opacity-35 disabled:cursor-default">
+              class="h-10 px-5 rounded-full bg-brand text-white text-[1.125em] md:text-[1.5em] disabled:opacity-35 disabled:cursor-default">
               <span x-show="status !== 'loading'">Submit</span>
               <span x-show="status === 'loading'">Sending…</span>
             </button>
