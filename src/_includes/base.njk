@@ -19,11 +19,11 @@
   <meta property="twitter:card" content="summary_large_image" />
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
-  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | url }}" />
+  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | url }}" />
 
   <link href="https://fonts.googleapis.com/css2?display=swap&family=Montserrat:ital,wght@0,400;1,400" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gaId }}"></script>
@@ -47,7 +47,7 @@
 <body class="text-brand font-sans antialiased">
   <nav class="fixed top-0 inset-x-0 z-10 flex items-center gap-3 md:gap-6 py-3 md:py-4 px-4 md:px-6 bg-[#f5f5f5]/90 backdrop-blur-sm">
     <a href="#home" class="shrink-0">
-      <img src="/assets/images/icon-master-iOS-Default-1024x1024@1x.png" alt="Dialog Lab" class="w-8 h-8 md:w-9 md:h-9 rounded-lg" />
+      <img src="{{ '/assets/images/icon-master-iOS-Default-1024x1024@1x.png' | url }}" alt="Dialog Lab" class="w-8 h-8 md:w-9 md:h-9 rounded-lg" />
     </a>
     <div class="flex flex-1 flex-wrap justify-center gap-x-3 gap-y-1 md:gap-x-6 md:gap-y-2 text-[0.8125em] md:text-[1.125em]">
       <a href="#why-dialog-lab" class="hover:underline">Why Dialog Lab</a>
