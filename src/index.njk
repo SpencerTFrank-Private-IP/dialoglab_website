@@ -46,6 +46,10 @@ description: Be heard
     <h3 class="max-w-[30rem] text-[1.375em] md:text-[1.75em] leading-snug">How the App Works</h3>
 
     <div class="flex flex-col items-center w-full">
+      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug mb-[calc(16pt+1.5rem)]">
+        1. Choose your position on the topics that are important to you.
+      </p>
+
       <div
         x-data="{
           images: [
@@ -64,7 +68,7 @@ description: Be heard
             }, 3400);
           }
         }"
-        class="relative w-full max-w-sm lg:max-w-xl aspect-[12/7] overflow-hidden rounded-2xl mb-[calc(16pt+1.5rem)]"
+        class="relative w-full max-w-sm lg:max-w-xl aspect-[12/7] overflow-hidden rounded-2xl"
       >
         <template x-for="(img, i) in images" :key="i">
           <img
@@ -91,10 +95,6 @@ description: Be heard
           </template>
         </div>
       </div>
-
-      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
-        1. Choose your position on the topics that are important to you.
-      </p>
     </div>
   </section>
 
@@ -102,6 +102,10 @@ description: Be heard
   <section id="how-it-works-step-2" class="snap-start scroll-mt-[92px] md:scroll-mt-[76px] w-full flex flex-col items-center justify-start gap-4 md:gap-6 px-4 sm:px-6 md:px-8 pt-16 pb-12">
 
     <div class="flex flex-col items-center w-full">
+      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug mb-[16pt]">
+        2. We quickly match you with someone on the other side for a messaging chat. To keep things civil and constructive we use AI to moderate.
+      </p>
+
       <div
         x-data="{
           rows: [
@@ -126,7 +130,7 @@ description: Be heard
           },
           init() { this.cycle(); }
         }"
-        class="flex flex-col justify-start gap-3 lg:gap-[1.125rem] w-full max-w-sm lg:max-w-xl h-[calc(14rem+100pt)] lg:h-[calc(21rem+100pt)] shrink-0 overflow-hidden mb-[16pt] text-left font-system"
+        class="flex flex-col justify-start gap-3 lg:gap-[1.125rem] w-full max-w-sm lg:max-w-xl h-[calc(14rem+100pt)] lg:h-[calc(21rem+100pt)] shrink-0 overflow-hidden text-left font-system"
       >
         <template x-for="(row, i) in rows" :key="i">
           <div
@@ -152,10 +156,6 @@ description: Be heard
           </div>
         </template>
       </div>
-
-      <p class="max-w-[41.375rem] text-[1em] md:text-[1.5em] leading-snug">
-        2. We quickly match you with someone on the other side for a messaging chat. To keep things civil and constructive we use AI to moderate.
-      </p>
     </div>
   </section>
 
