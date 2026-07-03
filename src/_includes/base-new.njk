@@ -65,7 +65,10 @@
 
       function updateScrollEffects() {
         var y = window.scrollY;
-        var parallaxX = -Math.min(y * 0.05, 96);
+        var maxParallax = parseFloat(
+          getComputedStyle(root).getPropertyValue('--page-bg-parallax-max')
+        ) || 96;
+        var parallaxX = -Math.min(y * 0.05, maxParallax);
 
         root.style.setProperty('--page-bg-parallax-x', parallaxX + 'px');
         ticking = false;

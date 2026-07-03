@@ -56,6 +56,7 @@
     background-color: white;
     min-height: 100vh;
     scroll-padding-top: calc(64px + 32px);
+    --page-bg-parallax-max: 96px;
 
     /* Nav glass edge — tweak these to adjust the bottom lip */
     --nav-edge-height: 2px;
@@ -74,6 +75,12 @@
     }
   }
 
+  @media (max-width: 767px) {
+    .page-new {
+      --page-bg-parallax-max: 48px;
+    }
+  }
+
   .page-new__backdrop {
     position: fixed;
     top: 50%;
@@ -82,6 +89,7 @@
     width: min(100vw, 100vh);
     height: 1024pt;
     transform: translate(-50%, -50%);
+    overflow: hidden;
     pointer-events: none;
   }
 
@@ -94,7 +102,10 @@
 
   .page-new__bg {
     position: absolute;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--page-bg-parallax-max) * -1);
+    width: calc(100% + var(--page-bg-parallax-max) * 2);
     opacity: 0.6;
     background-image: url('../images/bg.svg');
     background-position: center;
