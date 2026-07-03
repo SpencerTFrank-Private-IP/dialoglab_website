@@ -1069,4 +1069,40 @@
       font-size: 24px;
     }
   }
+
+  .page-new__footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .page-new__footer-year,
+  .page-new__footer-link {
+    margin: 0;
+    color: #3e0946;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .page-new__footer-link:hover {
+    text-decoration: underline;
+  }
+
+  .page-new__footer-youtube {
+    display: inline-flex;
+    margin-top: 4px;
+    color: rgb(62 9 70 / 0.7);
+    transition: color 150ms ease;
+  }
+
+  .page-new__footer-youtube:hover {
+    color: #3e0946;
+  }
+
+  .page-new__footer-youtube svg {
+    width: 24px;
+    height: 24px;
+  }
 }
