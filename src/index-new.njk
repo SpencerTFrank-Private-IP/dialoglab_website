@@ -104,6 +104,174 @@ permalink: /index-new/
   </div>
 </section>
 
-<section id="why" class="page-new__anchor page-new__anchor--why" aria-label="Why"></section>
+<section id="why" class="page-new__anchor page-new__anchor--why" aria-label="Why">
+  <div class="page-new__why">
+    <div class="page-new__why-card">
+      <div class="page-new__why-content">
+        <h2 class="page-new__why-title">“Now why would I do that?”</h2>
 
-<section id="join-beta" class="page-new__anchor page-new__anchor--join" aria-label="Join the beta"></section>
+        <div class="page-new__why-prose">
+          <p>
+            Dialog Lab offers you a place to explore ideas and differences in a way that keeps you <strong>as safe as possible</strong> from abuse and long-term repercussions. This used to require expensive human facilitators to make it work — and even then peoples’ reputations were on the line.
+          </p>
+          <p>
+            Dialog Lab’s proprietary AI model allows anyone to discuss topics <strong>without fear of abuse or personal attacks</strong>. Here’s how it works:
+          </p>
+        </div>
+
+        <ol class="page-new__why-list">
+          <li>The model introduces the conversation partners and topics, then model sits in the background and allows two people to discuss topics naturally through chat.</li>
+          <li>When it sees abusive content, it blocks it from being sent in the first place and warns the aggressor.</li>
+          <li>When it sees specific forms of debate behavior that is known to shut down conversation, it warns the users but allows the conversation to proceed.</li>
+          <li>If the users get off-topic, the moderator nudges the participants back but doesn’t force the issue if users want to continue.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join-beta" class="page-new__anchor page-new__anchor--join" aria-label="Join the beta">
+  <div class="page-new__signup">
+    <div class="page-new__signup-intro">
+      <h2 class="page-new__signup-headline">
+        Sign-up, and <em>think for yourself</em>
+      </h2>
+
+      <div class="page-new__signup-prose">
+        <p>
+          We're recruiting a select group to be included in our beta app testing program. To be considered, you must be open to civil conversations via messaging with people who see things differently.
+        </p>
+        <p>
+          Users will be anonymous to each other, and all information will be held confidential.
+        </p>
+      </div>
+    </div>
+
+    <div class="page-new__signup-form-wrap">
+      <div class="page-new__signup-card">
+        <form
+          class="page-new__signup-form"
+          x-data="{
+            status: 'idle',
+            errorMessage: '',
+            async submit(event) {
+              this.status = 'loading';
+              this.errorMessage = '';
+              const form = event.target;
+              try {
+                const res = await fetch(form.action, {
+                  method: 'POST',
+                  body: new FormData(form),
+                  headers: { Accept: 'application/json' },
+                });
+                if (res.ok) {
+                  this.status = 'success';
+                  form.reset();
+                } else {
+                  const json = await res.json().catch(() => null);
+                  this.errorMessage = json && json.errors
+                    ? json.errors.map(e => e.message).join(', ')
+                    : 'Something went wrong. Please try again.';
+                  this.status = 'error';
+                }
+              } catch (e) {
+                this.errorMessage = 'Something went wrong. Please check your connection and try again.';
+                this.status = 'error';
+              }
+            }
+          }"
+          action="https://formspree.io/f/xdarwboa"
+          method="POST"
+          @submit.prevent="submit($event)"
+        >
+          <template x-if="status === 'success'">
+            <p class="page-new__signup-message page-new__signup-message--success">
+              Thank you for applying to join the beta. Please share this link with others that may be interested: joindialoglab.com
+            </p>
+          </template>
+
+          <template x-if="status !== 'success'">
+            <div class="page-new__signup-fields">
+              <div class="page-new__signup-field">
+                <label class="page-new__signup-label" for="signup-name">Your Name</label>
+                <input
+                  id="signup-name"
+                  class="page-new__signup-input"
+                  type="text"
+                  name="name"
+                  maxlength="128"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="page-new__signup-field">
+                <label class="page-new__signup-label" for="signup-email">Your Email</label>
+                <input
+                  id="signup-email"
+                  class="page-new__signup-input"
+                  type="email"
+                  name="email"
+                  maxlength="128"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+
+              <div class="page-new__signup-field">
+                <label class="page-new__signup-label" for="signup-message">What you hope to get out of Dialog Lab</label>
+                <textarea
+                  id="signup-message"
+                  class="page-new__signup-textarea"
+                  name="message"
+                  maxlength="16384"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="page-new__signup-consent">
+                <input
+                  id="signup-consent"
+                  class="page-new__signup-checkbox"
+                  type="checkbox"
+                  name="consent"
+                  value="checked"
+                  required
+                />
+                <label class="page-new__signup-consent-label" for="signup-consent">
+                  I certify that I am 18 years or older.
+                </label>
+              </div>
+
+              <template x-if="status === 'error'">
+                <p class="page-new__signup-message page-new__signup-message--error" x-text="errorMessage"></p>
+              </template>
+
+              <div class="page-new__signup-submit-wrap">
+                <button class="page-new__signup-submit" type="submit" :disabled="status === 'loading'">
+                  <span x-show="status !== 'loading'">Join iOS Beta</span>
+                  <span x-show="status === 'loading'">Sending…</span>
+                </button>
+              </div>
+            </div>
+          </template>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-new__footer">
+    <div class="page-new__footer-brand">
+      <img
+        class="page-new__footer-mark"
+        src="{{ '/assets/images/footer-mark.svg' | url }}"
+        alt=""
+        width="126"
+        height="101"
+        decoding="async"
+      />
+      <p class="page-new__footer-wordmark">Dialog Lab</p>
+    </div>
+    <p class="page-new__footer-tagline">Agree to disagree.</p>
+  </footer>
+</section>
