@@ -1,0 +1,57 @@
+<nav
+  class="page-new__nav"
+  x-data="{
+    active: 'what',
+    init() {
+      const sections = ['what', 'why'];
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+          if (visible.length) this.active = visible[0].target.id;
+        },
+        { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+      );
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }
+  }"
+  aria-label="Primary"
+>
+  <div class="page-new__nav-inner">
+    <a href="#what" class="page-new__nav-brand">
+      <img src="{{ '/assets/images/dialog_lab_brand.svg' | url }}" alt="Dialog Lab" width="194" height="86" />
+    </a>
+
+    <div class="page-new__nav-links" role="navigation" aria-label="Sections">
+      <a
+        href="#what"
+        class="page-new__nav-link"
+        :class="{ 'is-active': active === 'what' }"
+        :aria-current="active === 'what' ? 'page' : false"
+      >
+        <span class="page-new__nav-link-label">What</span>
+        <span class="page-new__nav-link-rule" aria-hidden="true"></span>
+      </a>
+      <a
+        href="#why"
+        class="page-new__nav-link"
+        :class="{ 'is-active': active === 'why' }"
+        :aria-current="active === 'why' ? 'page' : false"
+      >
+        <span class="page-new__nav-link-label">Why</span>
+        <span class="page-new__nav-link-rule" aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <a href="#join-beta" class="page-new__nav-cta">
+      <span class="page-new__nav-cta-label">
+        <span class="page-new__nav-cta-label-full">Join iOS Beta</span>
+        <span class="page-new__nav-cta-label-short">Join</span>
+      </span>
+    </a>
+  </div>
+</nav>

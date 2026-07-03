@@ -1,0 +1,109 @@
+---
+layout: base-new.njk
+title: Dialog Lab
+description: Be heard
+permalink: /index-new/
+---
+
+<section id="what" class="page-new__anchor page-new__anchor--what" aria-label="What">
+  <div class="page-new__hero">
+    <h1 class="page-new__hero-headline">
+      Finally, there is a <em>safe</em> place to explore tough issues.
+    </h1>
+
+    <div
+      class="page-new__hero-previews"
+      x-data="{
+        slides: [
+          { image: '{{ '/assets/images/hero-mockup-topics.png' | url }}', caption: 'Pick some current topics' },
+          { image: '{{ '/assets/images/hero-mockup-match.png' | url }}', caption: 'Get matched like a game' },
+          { image: '{{ '/assets/images/hero-mockup-chat.png' | url }}', caption: 'Discuss topics safely' },
+        ],
+        current: 0,
+        dragging: false,
+        dragStartX: 0,
+        dragPointerId: null,
+        goTo(index) {
+          this.current = index;
+        },
+        next() {
+          this.current = (this.current + 1) % this.slides.length;
+        },
+        prev() {
+          this.current = (this.current - 1 + this.slides.length) % this.slides.length;
+        },
+        onDragStart(e) {
+          if (window.matchMedia('(min-width: 768px)').matches) return;
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          this.dragging = true;
+          this.dragStartX = e.clientX;
+          this.dragPointerId = e.pointerId;
+          e.currentTarget.setPointerCapture(e.pointerId);
+        },
+        onDragEnd(e) {
+          if (!this.dragging || e.pointerId !== this.dragPointerId) return;
+          this.dragging = false;
+          const delta = e.clientX - this.dragStartX;
+          this.dragPointerId = null;
+          try { e.currentTarget.releasePointerCapture(e.pointerId); } catch (_) {}
+          if (Math.abs(delta) < 40) return;
+          if (delta < 0) this.next();
+          else this.prev();
+        },
+        onDragCancel(e) {
+          if (e.pointerId !== this.dragPointerId) return;
+          this.dragging = false;
+          this.dragPointerId = null;
+          try { e.currentTarget.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
+      }"
+    >
+      <div
+        class="page-new__hero-viewport"
+        :class="{ 'is-dragging': dragging }"
+        @pointerdown="onDragStart($event)"
+        @pointerup="onDragEnd($event)"
+        @pointercancel="onDragCancel($event)"
+      >
+        <div class="page-new__hero-track" :class="{ 'is-dragging': dragging }" :style="`--hero-index: ${current}`">
+          <template x-for="(slide, index) in slides" :key="index">
+            <figure class="page-new__hero-slide">
+              <div class="page-new__hero-mockup">
+                <img
+                  :src="slide.image"
+                  alt=""
+                  width="327"
+                  height="674"
+                  decoding="async"
+                  class="page-new__hero-mockup-img"
+                />
+              </div>
+              <figcaption class="page-new__hero-caption">
+                <span class="page-new__hero-caption-num" x-text="`${index + 1}.`"></span>
+                <span x-text="slide.caption"></span>
+              </figcaption>
+            </figure>
+          </template>
+        </div>
+      </div>
+
+      <div class="page-new__hero-pagination" role="tablist" aria-label="App preview screens">
+        <template x-for="(slide, index) in slides" :key="index">
+          <button
+            type="button"
+            class="page-new__hero-dot"
+            :class="{ 'is-active': current === index }"
+            :aria-selected="current === index"
+            :aria-label="`Screen ${index + 1}: ${slide.caption}`"
+            role="tab"
+            @click="goTo(index)"
+          ></button>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="page-new__anchor page-new__anchor--why" aria-label="Why"></section>
+
+<section id="join-beta" class="page-new__anchor page-new__anchor--join" aria-label="Join the beta"></section>
