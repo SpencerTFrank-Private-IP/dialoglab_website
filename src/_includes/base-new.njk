@@ -55,5 +55,31 @@
   <main class="page-new__content">
     {{ content | safe }}
   </main>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var root = document.documentElement;
+      var ticking = false;
+
+      function updateScrollEffects() {
+        var y = window.scrollY;
+        var parallaxX = -Math.min(y * 0.05, 96);
+
+        root.style.setProperty('--page-bg-parallax-x', parallaxX + 'px');
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(updateScrollEffects);
+        }
+      }, { passive: true });
+
+      updateScrollEffects();
+    })();
+  </script>
 </body>
 </html>
