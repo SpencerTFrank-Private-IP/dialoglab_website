@@ -1,0 +1,21 @@
+<header class="beta-docs__topbar page-new__nav" aria-label="Beta help">
+  <div class="page-new__nav-inner beta-docs__topbar-inner">
+    <a href="{{ '/' | url }}" class="page-new__nav-brand beta-docs__brand">
+      <img src="{{ '/assets/images/dialog_lab_brand.svg' | url }}" alt="Dialog Lab" width="194" height="86" />
+    </a>
+
+    <button
+      type="button"
+      class="beta-docs__menu-btn"
+      x-on:click="sidebarOpen = !sidebarOpen"
+      x-bind:aria-expanded="sidebarOpen"
+      aria-controls="beta-docs-sidebar"
+    >
+      <span class="sr-only">Toggle navigation</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <div class="page-new__nav-edge" aria-hidden="true"></div>
+</header>

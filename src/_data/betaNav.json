@@ -1,0 +1,74 @@
+{
+  "groups": [
+    {
+      "title": "Getting Started",
+      "pages": [
+        {
+          "title": "Quick Start",
+          "slug": "",
+          "description": "A condensed overview of Dialog Lab and where to go next."
+        },
+        {
+          "title": "TestFlight Instructions",
+          "slug": "testflight-instructions",
+          "description": "Install the beta app via Apple's TestFlight."
+        },
+        {
+          "title": "First Setup",
+          "slug": "first-setup",
+          "description": "Create your account, profile, and preferences before your first conversation."
+        }
+      ]
+    },
+    {
+      "title": "Using the App",
+      "pages": [
+        {
+          "title": "Picking Topics",
+          "slug": "picking-topics",
+          "description": "Mark your stances on issues so you can be matched for conversation."
+        },
+        {
+          "title": "Starting a Discussion",
+          "slug": "starting-a-discussion",
+          "description": "Start a session, find a partner, and open your first chat."
+        },
+        {
+          "title": "Ending a Discussion",
+          "slug": "ending-a-discussion",
+          "description": "Pause or end a chat, then complete the post-conversation review."
+        },
+        {
+          "title": "Profile Settings",
+          "slug": "profile-settings",
+          "description": "Manage your account, matching preferences, and viewpoints."
+        }
+      ]
+    },
+    {
+      "title": "Deep Dives",
+      "pages": [
+        {
+          "title": "Matchmaking",
+          "slug": "matchmaking",
+          "description": "How pairing works, waiting states, and what affects your matches."
+        },
+        {
+          "title": "Moderation",
+          "slug": "moderation",
+          "description": "AI moderation, rules of engagement, and what happens when a message is flagged."
+        }
+      ]
+    },
+    {
+      "title": "Help",
+      "pages": [
+        {
+          "title": "How to Get Support",
+          "slug": "get-support",
+          "description": "Report issues, send feedback, and reach the Dialog Lab team."
+        }
+      ]
+    }
+  ]
+}
