@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{ title or "Dialog Lab" }}</title>
+  <title>{{ title or "Beta Help" }} — Dialog Lab</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light only" />
-  <meta name="description" content="{{ description or 'Be heard' }}" />
+  <meta name="description" content="{{ description or 'Dialog Lab beta help and documentation' }}" />
 
   <meta property="og:site_name" content="Dialog Lab" />
-  <meta property="og:title" content="{{ title or 'Dialog Lab' }}" />
+  <meta property="og:title" content="{{ title or 'Beta Help' }} — Dialog Lab" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="{{ description or 'Be heard' }}" />
+  <meta property="og:description" content="{{ description or 'Dialog Lab beta help and documentation' }}" />
   <meta property="og:image" content="{{ site.url }}/assets/images/card.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1280" />
@@ -32,7 +32,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', '{{ site.gaId }}', { 'send_page_view': false });
-    gtag('event', 'page_view', { 'page_title': '{{ title or "Dialog Lab" }}', 'page_location': window.location.href });
+    gtag('event', 'page_view', { 'page_title': '{{ title or "Beta Help" }}', 'page_location': window.location.href });
   </script>
 
   <script>
@@ -44,15 +44,15 @@
     })
   </script>
 </head>
-<body class="page-new text-brand font-sans antialiased">
+<body class="page-new beta-docs text-brand font-sans antialiased" x-data="{ sidebarOpen: false }" x-on:keydown.escape.window="sidebarOpen = false">
   <div class="page-new__backdrop" aria-hidden="true">
     <div class="page-new__bg"></div>
     <div class="page-new__scrim"></div>
   </div>
 
-  {% include "nav-new.njk" %}
+  {% include "nav-beta.njk" %}
 
-  <main class="page-new__content">
+  <main class="page-new__content beta-docs__main">
     {{ content | safe }}
   </main>
 

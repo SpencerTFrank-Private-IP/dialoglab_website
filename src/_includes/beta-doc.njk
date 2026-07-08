@@ -1,0 +1,96 @@
+---
+layout: base-beta.njk
+---
+{% set neighbors = order | betaNeighbors(collections.betaDocs) %}
+{% set prevDoc = neighbors.prev %}
+{% set nextDoc = neighbors.next %}
+
+<div
+  class="beta-docs__overlay"
+  x-show="sidebarOpen"
+  x-transition.opacity
+  x-on:click="sidebarOpen = false"
+  aria-hidden="true"
+></div>
+
+<div class="beta-docs__layout">
+  <aside
+    id="beta-docs-sidebar"
+    class="beta-docs__sidebar"
+    x-bind:class="{ 'is-open': sidebarOpen }"
+    aria-label="Documentation"
+  >
+    <nav class="beta-docs__sidebar-nav">
+      {% for group in betaNav.groups %}
+        <div class="beta-docs__nav-group">
+          <p class="beta-docs__nav-group-title">{{ group.title }}</p>
+          <ul class="beta-docs__nav-list">
+            {% for item in group.pages %}
+              {% if item.slug %}
+                {% set itemUrl = '/beta/' ~ item.slug ~ '/' %}
+              {% else %}
+                {% set itemUrl = '/beta/' %}
+              {% endif %}
+              <li>
+                <a
+                  href="{{ itemUrl | url }}"
+                  class="beta-docs__nav-link{% if page.url == itemUrl %} is-active{% endif %}"
+                  {% if page.url == itemUrl %}aria-current="page"{% endif %}
+                  x-on:click="sidebarOpen = false"
+                >
+                  <span class="beta-docs__nav-link-label">{{ item.title }}</span>
+                  <span class="beta-docs__nav-link-rule" aria-hidden="true"></span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </nav>
+  </aside>
+
+  <article class="beta-docs__article">
+    <div class="beta-docs__article-card">
+      <header class="beta-docs__article-header">
+        {% if group %}
+          <p class="beta-docs__breadcrumb">
+            <a href="{{ '/beta/' | url }}">Beta Help</a>
+            <span aria-hidden="true">/</span>
+            <span>{{ group }}</span>
+          </p>
+        {% endif %}
+        <h1 class="beta-docs__title">{{ title }}</h1>
+        {% if description %}
+          <p class="beta-docs__lede">{{ description }}</p>
+        {% endif %}
+      </header>
+
+      <div class="beta-docs__prose">
+        {{ content | safe }}
+      </div>
+
+      {% if prevDoc or nextDoc %}
+        <nav class="beta-docs__pager" aria-label="Documentation pages">
+          {% if prevDoc %}
+            <a href="{{ prevDoc.url | url }}" class="beta-docs__pager-link beta-docs__pager-link--prev">
+              <span class="beta-docs__pager-label">Previous</span>
+              <span class="beta-docs__pager-title">{{ prevDoc.data.title }}</span>
+            </a>
+          {% else %}
+            <span></span>
+          {% endif %}
+          {% if nextDoc %}
+            <a href="{{ nextDoc.url | url }}" class="beta-docs__pager-link beta-docs__pager-link--next">
+              <span class="beta-docs__pager-label">Next</span>
+              <span class="beta-docs__pager-title">{{ nextDoc.data.title }}</span>
+            </a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </div>
+
+    <footer class="beta-docs__footer">
+      <p class="beta-docs__footer-text">Dialog Lab beta · <a href="mailto:spencer@spencerfrank.com">Questions?</a></p>
+    </footer>
+  </article>
+</div>
