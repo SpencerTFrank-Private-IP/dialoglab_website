@@ -3,7 +3,7 @@
   x-data="{
     active: 'what',
     init() {
-      const sections = ['what', 'why'];
+      const sections = ['what', 'why', 'founder-note'];
       const observer = new IntersectionObserver(
         (entries) => {
           const visible = entries
@@ -28,19 +28,19 @@
 
     <div class="page-new__nav-links" role="navigation" aria-label="Sections">
       <a
-        href="#what"
-        class="page-new__nav-link"
-        :class="{ 'is-active': active === 'what' }"
-        :aria-current="active === 'what' ? 'page' : false"
-      >
-        <span class="page-new__nav-link-label">What</span>
-        <span class="page-new__nav-link-rule" aria-hidden="true"></span>
-      </a>
-      <a
         href="#why"
         class="page-new__nav-link"
         :class="{ 'is-active': active === 'why' }"
         :aria-current="active === 'why' ? 'page' : false"
+      >
+        <span class="page-new__nav-link-label">AI Mediator</span>
+        <span class="page-new__nav-link-rule" aria-hidden="true"></span>
+      </a>
+      <a
+        href="#founder-note"
+        class="page-new__nav-link"
+        :class="{ 'is-active': active === 'founder-note' }"
+        :aria-current="active === 'founder-note' ? 'page' : false"
       >
         <span class="page-new__nav-link-label">Why</span>
         <span class="page-new__nav-link-rule" aria-hidden="true"></span>

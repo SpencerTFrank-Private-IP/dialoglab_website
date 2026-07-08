@@ -704,6 +704,21 @@
     font-weight: 700;
   }
 
+  .page-new__why-signature {
+    margin: 0;
+    color: #3e0946;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 1100px) {
+    .page-new__why-signature {
+      font-size: 16px;
+    }
+  }
+
   .page-new__why-list {
     margin: 1.5em 0 0;
     padding: 0;
