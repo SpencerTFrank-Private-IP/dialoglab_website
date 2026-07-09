@@ -27,7 +27,7 @@ After a conversation ends, Dialog Lab guides you through a short review:
 1. **Satisfaction** — rate how the conversation went.
 2. **Issues** — note anything that did not work well.
 3. **Appreciation note** — optionally share something you valued about your partner (they will see this).
-4. **Position changed** — indicate whether your perspective shifted.
+4. **Viewpoint changed** — indicate whether your viewpoint shifted.
 5. **Private note** — keep personal reflections only you can see.
 
 This feedback helps Dialog Lab improve matching and moderation over time.

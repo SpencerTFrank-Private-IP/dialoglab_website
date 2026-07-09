@@ -49,7 +49,7 @@ As your search progresses, the lobby may show different states:
 
 ## Match preview
 
-Before chat begins, you see which topic was selected and each person's position — for example, "You supported this" and your partner opposed it. A short countdown gives both people time to prepare, then you are taken directly into the chat.
+Before chat begins, you see which topic was selected and each person's viewpoint — for example, "You supported this" and your partner opposed it. A short countdown gives both people time to prepare, then you are taken directly into the chat.
 
 ## If your match cancels
 

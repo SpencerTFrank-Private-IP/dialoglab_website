@@ -14,7 +14,7 @@ Dialog Lab explains: *"Add a thumbs up or down… Any topics that you have marke
 
 ## How to mark a stance
 
-- **Thumbs up** — you generally agree with or support the topic's position.
+- **Thumbs up** — you generally agree with or support the topic's viewpoint.
 - **Thumbs down** — you generally disagree with or oppose it.
 - **Tap again** — clears your vote if you change your mind.
 
