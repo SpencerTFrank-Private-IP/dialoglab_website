@@ -28,8 +28,7 @@ Under **Profile → Account Preferences**, you can manage:
 
 <div class="beta-docs__callout beta-docs__callout--info">
   <strong>App version</strong>
-  Account Preferences shows the current app version (0.5.0 during this beta). Reference this when reporting bugs.
-  <!-- Spencer: This will need to be dynamic or updated -->
+  Account Preferences shows this beta version. Reference this when reporting bugs.
 </div>
 
 ## Matching Preferences

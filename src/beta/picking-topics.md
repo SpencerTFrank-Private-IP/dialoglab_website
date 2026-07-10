@@ -13,14 +13,14 @@ Open the **Topics** tab to browse issues available for conversation. Each topic 
 Dialog Lab explains: *"Add a thumbs up or down… Any topics that you have marked could be chosen to discuss."*
 
 ## How to mark a stance
-<!-- Spencer: This seems a little trivial. I think it also needs to be more prominent how not having a stance means you won't be matched on the topic -->
+
+You will only be matched on topics where you have marked a stance. If you leave a topic unmarked, it will not be used for matchmaking.
 
 - **Thumbs up** — you generally agree with or support the topic's viewpoint.
 - **Thumbs down** — you generally disagree with or oppose it.
-- **Tap again** — clears your vote if you change your mind.
-<!-- Spencer: Not sure 'vote' is the right term. Can we stick with stance or viewpoint? -->
+- **Tap again** — clears your stance if you change your mind.
 
-Only topics you have marked are eligible for matchmaking. If you have not voted on any topics, you will be prompted to select some before you can start a session.
+If you have not marked any topics, you will be prompted to select some before you can start a session.
 
 ## Active and expired topics
 
@@ -29,7 +29,7 @@ Topics rotate over time. In **Profile → Viewpoints**, you can review:
 - **Active Topics** — currently available for matching.
 - **Expired Viewpoints** — topics you previously marked that are no longer in rotation.
 
-To add new active topics, return to the Topics tab and vote on issues you have not marked yet.
+To add new active topics, return to the Topics tab and mark stances on issues you have not marked yet.
 
 ## While you wait for a match
 
