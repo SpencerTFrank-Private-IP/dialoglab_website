@@ -1,28 +1,13 @@
 {
   "groups": [
     {
-      "title": "Getting Started",
+      "title": "Using the App",
       "pages": [
         {
           "title": "Quick Start",
           "slug": "",
-          "description": "A condensed overview of Dialog Lab and where to go next."
+          "description": "Install Dialog Lab, set up your account, and start your first conversation."
         },
-        {
-          "title": "TestFlight Instructions",
-          "slug": "testflight-instructions",
-          "description": "Install the beta app via Apple's TestFlight."
-        },
-        {
-          "title": "First Setup",
-          "slug": "first-setup",
-          "description": "Create your account, profile, and preferences before your first conversation."
-        }
-      ]
-    },
-    {
-      "title": "Using the App",
-      "pages": [
         {
           "title": "Picking Topics",
           "slug": "picking-topics",

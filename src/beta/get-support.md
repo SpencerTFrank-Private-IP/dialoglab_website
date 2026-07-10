@@ -2,7 +2,7 @@
 layout: beta-doc.njk
 title: How to Get Support
 description: Report issues, send feedback, and reach the Dialog Lab team.
-order: 10
+order: 8
 group: Help
 ---
 

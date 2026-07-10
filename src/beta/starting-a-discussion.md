@@ -2,7 +2,7 @@
 layout: beta-doc.njk
 title: Starting a Discussion
 description: Start a session, find a partner, and open your first chat.
-order: 5
+order: 3
 group: Using the App
 ---
 
@@ -10,7 +10,7 @@ group: Using the App
 
 Make sure you have:
 
-1. Completed [First Setup](/beta/first-setup/).
+1. Completed [Quick Start](/beta/) setup.
 2. Marked at least one topic in the [Topics tab](/beta/picking-topics/).
 
 The Convos tab will prompt you to select topics first if you have not voted on any yet.

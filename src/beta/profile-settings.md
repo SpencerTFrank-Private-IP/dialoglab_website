@@ -2,7 +2,7 @@
 layout: beta-doc.njk
 title: Profile Settings
 description: Manage your account, matching preferences, and viewpoints.
-order: 7
+order: 5
 group: Using the App
 ---
 

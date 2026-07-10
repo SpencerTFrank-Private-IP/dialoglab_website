@@ -2,7 +2,7 @@
 layout: beta-doc.njk
 title: Matchmaking
 description: How pairing works, waiting states, and what affects your matches.
-order: 8
+order: 6
 group: Deep Dives
 ---
 

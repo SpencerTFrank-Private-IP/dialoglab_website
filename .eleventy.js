@@ -24,6 +24,36 @@ module.exports = function (eleventyConfig) {
     };
   });
 
+  // Add id attributes to markdown headings for in-page anchors
+  const markdownIt = require("markdown-it");
+  const md = markdownIt({ html: true, linkify: true }).use((markdown) => {
+    const defaultRender =
+      markdown.renderer.rules.heading_open ||
+      function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options);
+      };
+
+    markdown.renderer.rules.heading_open = function (
+      tokens,
+      idx,
+      options,
+      env,
+      self
+    ) {
+      const inline = tokens[idx + 1];
+      if (inline && inline.type === "inline") {
+        const slug = inline.content
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-");
+        if (slug) tokens[idx].attrSet("id", slug);
+      }
+      return defaultRender(tokens, idx, options, env, self);
+    };
+  });
+  eleventyConfig.setLibrary("md", md);
+
   // Strip HTML comments (e.g. <!-- Spencer: ... -->) from rendered pages
   eleventyConfig.addTransform("stripHtmlComments", (content, outputPath) => {
     if (outputPath && outputPath.endsWith(".html")) {

@@ -2,7 +2,7 @@
 layout: beta-doc.njk
 title: Moderation
 description: AI moderation, rules of engagement, and what happens when a message is flagged.
-order: 9
+order: 7
 group: Deep Dives
 ---
 

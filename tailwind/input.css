@@ -1423,12 +1423,14 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 1.3;
+    scroll-margin-top: calc(64px + 48px);
   }
 
   @media (min-width: 768px) {
     .beta-docs__prose h2 {
       font-size: 22px;
       margin-top: 24px;
+      scroll-margin-top: calc(86px + 64px);
     }
   }
 
@@ -1505,6 +1507,21 @@
   .beta-docs__prose ol:not(.beta-docs__link-grid) li:last-child,
   .beta-docs__steps li:last-child {
     margin-bottom: 0;
+  }
+
+  .beta-docs__learn-more {
+    display: block;
+    margin-top: 6px;
+    color: #4f1658;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .beta-docs__learn-more:hover {
+    color: #3e0946;
   }
 
   .beta-docs__prose table {

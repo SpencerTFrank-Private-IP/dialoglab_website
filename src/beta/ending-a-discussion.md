@@ -2,7 +2,7 @@
 layout: beta-doc.njk
 title: Ending a Discussion
 description: Pause or end a chat, then complete the post-conversation review.
-order: 6
+order: 4
 group: Using the App
 ---
 

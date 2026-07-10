@@ -2,7 +2,7 @@
 layout: beta-doc.njk
 title: Picking Topics
 description: Mark your stances on issues so you can be matched for conversation.
-order: 4
+order: 2
 group: Using the App
 ---
 
