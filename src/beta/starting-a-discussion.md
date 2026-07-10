@@ -25,6 +25,11 @@ From the **Convos** tab:
 
 See [Matchmaking](/beta/matchmaking/) for a deeper look at waiting states and notifications.
 
+<div class="beta-docs__callout beta-docs__callout--info">
+  <strong>Wait time expectations</strong>
+  In the beta, the match-making wait-time will be slow because we have a small cohort of beta testers. When the platform is released to the public and there are more users, the wait-time will dramatically decrease. Please, be patient in the beta. 
+</div>
+
 ## When a match is found
 
 You will see a **match preview** showing the topic and each person's stance — for example, "You supported this" or "You opposed this." A short countdown gives you time to prepare before the chat opens.
@@ -42,14 +47,14 @@ When the countdown finishes, you are taken directly into the conversation — no
 - Names who supports and who opposes the topic.
 - Adapts to your matching preferences (casual vs debate style).
 
-You will then be prompted to share **why you hold your view** — your opening statement. Take your time. Your partner may still be composing theirs.
+You will then be prompted to share **what you hope to get out** of the conversation and **why you hold your view** — your opening statement. Take your time. Your partner may still be composing theirs.
 
-When your partner completes their opening statement, you will see a nudge: *"Your partner completed their opening statement. Share yours when you're ready."*
+When your partner completes their opening statement, you will see a nudge: *"Your partner completed their opening statement. Share yours when you're ready."* (### Actually, the AI moderator will say something slightly different)
 
 ## During the conversation
 
 - Reply thoughtfully and stay focused on ideas, not personal attacks.
-- The AI moderator may send reminders visible to both of you, or block messages that cross the line.
+- The AI moderator may send reminders visible to both of you, or block messages that are deemed abusive.
 - You can **Pause** or **End** the conversation from the chat menu at any time.
 
 Learn more in [Moderation](/beta/moderation/) and [Ending a Discussion](/beta/ending-a-discussion/).

@@ -18,7 +18,7 @@ Matching considers:
 
 <div class="beta-docs__callout beta-docs__callout--warning">
   <strong>Matching can take a while during the beta</strong>
-  The pool of active users is still small. During slow periods, finding a partner may take <strong>multiple hours</strong>. Keep notifications enabled, mark several topics, and consider leaving a session running while you go about your day.
+  The pool of active users is still small. During slow periods, finding a partner may take <strong>multiple hours.</strong>  Keep notifications enabled, mark several topics, and consider leaving a session running while you go about your day.
 </div>
 
 ## Starting and cancelling a search
@@ -55,7 +55,7 @@ Before chat begins, you see which topic was selected and each person's viewpoint
 
 Sometimes a partner declines or cancels before chat starts. Dialog Lab returns you to searching automatically. This is normal during the beta when the matchable pool is small.
 
-## How preferences affect pairing
+## How preferences affect pairing (### I think we need to be explicit in how these are nice-to-haves but not must haves, and a conversation may not match per your preference). 
 
 - **Response Speed** — pairs you with partners who reply at a similar pace.
 - **Convo Style (Casual vs Debate)** — influences the moderator's opening message and how structured the conversation feels.

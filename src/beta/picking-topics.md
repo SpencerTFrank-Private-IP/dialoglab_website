@@ -12,11 +12,11 @@ Open the **Topics** tab to browse issues available for conversation. Each topic 
 
 Dialog Lab explains: *"Add a thumbs up or down… Any topics that you have marked could be chosen to discuss."*
 
-## How to mark a stance
+## How to mark a stance (### This seems a little trivial. I think it also needs to be more prominent how not having a stance means you won't be matched on the topic)
 
 - **Thumbs up** — you generally agree with or support the topic's viewpoint.
 - **Thumbs down** — you generally disagree with or oppose it.
-- **Tap again** — clears your vote if you change your mind.
+- **Tap again** — clears your vote (###Not sure 'vote' is the right term. Can we stick with stance or viewpoint?' if you change your mind.
 
 Only topics you have marked are eligible for matchmaking. If you have not voted on any topics, you will be prompted to select some before you can start a session.
 
