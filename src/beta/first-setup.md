@@ -29,7 +29,8 @@ The first time you open Dialog Lab, you will walk through a short onboarding flo
     <strong>Set matching preferences.</strong> Choose your <em>Response Speed</em> (Slow or Fast) and <em>Convo Style</em> (Casual or Debate). This helps match you with the best available partner.
   </li>
   <li>
-    <strong>Review the Rules of Engagement.</strong> Five simple rules to keep things civil (### Lets talk about these rules of engagement). See the full list on the <a href="/beta/moderation/">Moderation</a> page.
+    <strong>Review the Rules of Engagement.</strong> Five simple rules to keep things civil. See the full list on the <a href="/beta/moderation/">Moderation</a> page.
+    <!-- Spencer: Lets talk about these rules of engagement -->
   </li>
   <li>
     <strong>Enable notifications.</strong> Dialog Lab needs to reach you when a match is found or your partner replies. 

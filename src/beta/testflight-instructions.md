@@ -44,5 +44,6 @@ When prompted, allow notifications. Dialog Lab uses them to alert you when a mat
 
 <div class="beta-docs__callout beta-docs__callout--warning">
   <strong>You are using a beta</strong>
-  Dialog Lab is currently at version ### (We need to have this be either dynamic, or we just specify its a beta version). Features may change, and you may encounter bugs. Use TestFlight's built-in feedback option or see <a href="/beta/get-support/">How to Get Support</a> if something goes wrong.
+  Dialog Lab is currently a beta version. Features may change, and you may encounter bugs. Use TestFlight's built-in feedback option or see <a href="/beta/get-support/">How to Get Support</a> if something goes wrong.
+  <!-- Spencer: We need to have this be either dynamic, or we just specify its a beta version -->
 </div>

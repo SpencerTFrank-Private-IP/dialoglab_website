@@ -12,7 +12,8 @@ Every Dialog Lab conversation includes an AI moderator that stays in the chat an
 
 As the app explains: *"Time-limited, anonymous. An AI moderator stays in the chat and keeps things civil — it'll step in if a message crosses the line."*
 
-## Rules of Engagement (### This is probably the part that we need to put the most thought into)
+## Rules of Engagement
+<!-- Spencer: This is probably the part that we need to put the most thought into -->
 
 During onboarding, you agree to five simple rules. Keep these in mind throughout every conversation:
 

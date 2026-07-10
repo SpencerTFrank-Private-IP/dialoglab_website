@@ -24,6 +24,14 @@ module.exports = function (eleventyConfig) {
     };
   });
 
+  // Strip HTML comments (e.g. <!-- Spencer: ... -->) from rendered pages
+  eleventyConfig.addTransform("stripHtmlComments", (content, outputPath) => {
+    if (outputPath && outputPath.endsWith(".html")) {
+      return content.replace(/<!--[\s\S]*?-->/g, "");
+    }
+    return content;
+  });
+
   eleventyConfig.setServerOptions({
     port: 8080,
   });

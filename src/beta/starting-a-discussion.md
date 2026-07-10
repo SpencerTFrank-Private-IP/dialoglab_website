@@ -49,7 +49,8 @@ When the countdown finishes, you are taken directly into the conversation — no
 
 You will then be prompted to share **what you hope to get out** of the conversation and **why you hold your view** — your opening statement. Take your time. Your partner may still be composing theirs.
 
-When your partner completes their opening statement, you will see a nudge: *"Your partner completed their opening statement. Share yours when you're ready."* (### Actually, the AI moderator will say something slightly different)
+When your partner completes their opening statement, you will see a nudge: *"Your partner completed their opening statement. Share yours when you're ready."*
+<!-- Spencer: Actually, the AI moderator will say something slightly different -->
 
 ## During the conversation
 

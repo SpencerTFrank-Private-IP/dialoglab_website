@@ -55,7 +55,8 @@ Before chat begins, you see which topic was selected and each person's viewpoint
 
 Sometimes a partner declines or cancels before chat starts. Dialog Lab returns you to searching automatically. This is normal during the beta when the matchable pool is small.
 
-## How preferences affect pairing (### I think we need to be explicit in how these are nice-to-haves but not must haves, and a conversation may not match per your preference). 
+## How preferences affect pairing
+<!-- Spencer: I think we need to be explicit in how these are nice-to-haves but not must haves, and a conversation may not match per your preference. -->
 
 - **Response Speed** — pairs you with partners who reply at a similar pace.
 - **Convo Style (Casual vs Debate)** — influences the moderator's opening message and how structured the conversation feels.
