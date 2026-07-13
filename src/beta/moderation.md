@@ -12,17 +12,28 @@ Every Dialog Lab conversation includes an AI moderator that stays in the chat an
 
 As the app explains: *"Time-limited, anonymous. An AI moderator stays in the chat and keeps things civil — it'll step in if a message crosses the line."*
 
-## Rules of Engagement
-<!-- Spencer: This is probably the part that we need to put the most thought into -->
+## Meet your moderator
 
-During onboarding, you agree to five simple rules. Keep these in mind throughout every conversation:
+Effective moderation takes both trust and skill. Our AI moderator:
 
 <ol class="beta-docs__steps">
-  <li>Be authentic but kind.</li>
-  <li>Assume best intentions from your partner.</li>
-  <li>Avoid assumptions and stereotypes.</li>
-  <li>Winning is both people feeling heard and learning together.</li>
-  <li>Be patient. Good conversations take time.</li>
+  <li>Never takes a side — it referees how you argue, not what you believe</li>
+  <li>Blocks abusive messages before they're ever sent, so they never touch the conversation</li>
+  <li>When it steps in (a nudge, a flag, a suggested rephrase), you both see it and why</li>
+  <li>Makes sure you both get your turn</li>
+</ol>
+
+## Rules of Engagement
+
+During onboarding, you agree to four simple ground rules. Keep these in mind throughout every conversation:
+
+### Ground Rules
+
+<ol class="beta-docs__steps">
+  <li>Assume good intent in your partner</li>
+  <li>Respect the conversation style (discussion or debate)</li>
+  <li>Labeling or stereotyping will be flagged</li>
+  <li>Slurs and abuse will be blocked</li>
 </ol>
 
 <div class="beta-docs__callout beta-docs__callout--tip">
