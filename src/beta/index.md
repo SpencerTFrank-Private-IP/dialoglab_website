@@ -38,8 +38,8 @@ You can change avatar, home state, and matching preferences later under **Profil
     <a class="beta-docs__learn-more" href="/beta/picking-topics/#how-to-mark-a-stance">Learn more</a>
   </li>
   <li>
-    <strong>Start a session.</strong> From the Convos tab, tap Start a Session. Dialog Lab searches for a partner with an opposing view.
-    <a class="beta-docs__learn-more" href="/beta/starting-a-discussion/#start-a-session">Learn more</a>
+    <strong>Get matched.</strong> From the Convos tab, tap Get Matched. Dialog Lab searches for a partner with an opposing view.
+    <a class="beta-docs__learn-more" href="/beta/starting-a-discussion/#get-matched">Learn more</a>
   </li>
   <li>
     <strong>Chat.</strong> Share why you hold your view, respond to your partner, and let the AI moderator keep things on track.
@@ -53,7 +53,7 @@ You can change avatar, home state, and matching preferences later under **Profil
 
 <div class="beta-docs__callout beta-docs__callout--info">
   <strong>Matching can take a while</strong>
-  During the beta, the user pool is small. Finding a partner may take multiple hours in slow periods — keep notifications on and leave a session running if you can.
+  During the beta, the user pool is small. Finding a partner may take multiple hours in slow periods — keep notifications on and leave matching running if you can.
 </div>
 
 ## Where to go next
@@ -68,7 +68,7 @@ You can change avatar, home state, and matching preferences later under **Profil
   <li>
     <a class="beta-docs__link-card" href="/beta/starting-a-discussion/">
       <strong>Starting a Discussion</strong>
-      <span>Start a session and enter your first chat.</span>
+      <span>Get matched and enter your first chat.</span>
     </a>
   </li>
   <li>

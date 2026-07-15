@@ -1,7 +1,7 @@
 ---
 layout: beta-doc.njk
 title: Starting a Discussion
-description: Start a session, find a partner, and open your first chat.
+description: Get matched, find a partner, and open your first chat.
 order: 3
 group: Using the App
 ---
@@ -15,11 +15,11 @@ Make sure you have:
 
 The Convos tab will prompt you to select topics first if you have not voted on any yet.
 
-## Start a session
+## Get matched
 
 From the **Convos** tab:
 
-1. Tap **Start a Session** on the Matching Status Card.
+1. Tap **Get Matched** on the Matching Status Card.
 2. Dialog Lab begins searching for a partner with an opposing view on a shared topic.
 3. While you wait, the card updates to show your search status. You can add more topics or choose to be notified when a match is found.
 

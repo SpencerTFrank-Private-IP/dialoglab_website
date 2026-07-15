@@ -20,7 +20,7 @@ You will only be matched on topics where you have marked a stance. If you leave 
 - **Thumbs down** — you generally disagree with or oppose it.
 - **Tap again** — clears your stance if you change your mind.
 
-If you have not marked any topics, you will be prompted to select some before you can start a session.
+If you have not marked any topics, you will be prompted to select some before you can get matched.
 
 ## Active and expired topics
 

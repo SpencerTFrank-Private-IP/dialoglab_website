@@ -18,12 +18,12 @@ Matching considers:
 
 <div class="beta-docs__callout beta-docs__callout--warning">
   <strong>Matching can take a while during the beta</strong>
-  The pool of active users is still small. During slow periods, finding a partner may take <strong>multiple hours.</strong>  Keep notifications enabled, mark several topics, and consider leaving a session running while you go about your day.
+  The pool of active users is still small. During slow periods, finding a partner may take <strong>multiple hours.</strong>  Keep notifications enabled, mark several topics, and consider leaving matching running while you go about your day.
 </div>
 
 ## Starting and cancelling a search
 
-From the Convos tab, tap **Start a Session** to enter the matchable pool. While searching:
+From the Convos tab, tap **Get Matched** to enter the matchable pool. While searching:
 
 - The Matching Status Card shows your current status.
 - You can **cancel** at any time to leave the pool.
@@ -69,4 +69,4 @@ Update preferences anytime under **Profile → Matching Preferences**.
 1. Mark several topics to widen the pool.
 2. Keep notifications enabled.
 3. Add topics while waiting if the search is taking a while.
-4. Start a session and leave it running during slow periods — a match may arrive hours later.
+4. Tap **Get Matched** and leave matching running during slow periods — a match may arrive hours later.
