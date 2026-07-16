@@ -8,7 +8,7 @@ group: Using the App
 
 ## The Topics tab
 
-Open the **Topics** tab to browse issues available for conversation. Each topic represents a real-world question people disagree about.
+After first-time setup, Dialog Lab opens on the **Topics** tab. Open it anytime later to browse issues available for conversation. Each topic represents a real-world question people disagree about.
 
 Dialog Lab explains: *"Add a thumbs up or down… Any topics that you have marked could be chosen to discuss."*
 

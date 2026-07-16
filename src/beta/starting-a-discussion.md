@@ -11,9 +11,9 @@ group: Using the App
 Make sure you have:
 
 1. Completed [Quick Start](/beta/) setup.
-2. Marked at least one topic in the [Topics tab](/beta/picking-topics/).
+2. Marked at least one topic in the [Topics tab](/beta/picking-topics/) — where the app opens after onboarding.
 
-The Convos tab will prompt you to select topics first if you have not voted on any yet.
+You need at least one marked topic before you can get matched.
 
 ## Get matched
 

@@ -28,6 +28,8 @@ On first launch, walk through onboarding (a few minutes, once):
 3. Set matching preferences: Response Speed (Slow/Fast) and Convo Style (Casual/Debate).
 4. Review the [Rules of Engagement](/beta/moderation/), enable notifications, and accept the terms.
 
+When onboarding finishes, Dialog Lab opens on the **Topics** tab so you can mark stances right away.
+
 You can change avatar, home state, and matching preferences later under **Profile**.
 
 ## Start a conversation
