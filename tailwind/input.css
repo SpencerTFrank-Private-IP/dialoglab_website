@@ -1116,9 +1116,15 @@
     text-decoration: underline;
   }
 
+  .page-new__footer-social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 4px;
+  }
+
   .page-new__footer-youtube {
     display: inline-flex;
-    margin-top: 4px;
     color: rgb(62 9 70 / 0.7);
     transition: color 150ms ease;
   }
