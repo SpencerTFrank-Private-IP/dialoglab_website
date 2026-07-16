@@ -12,6 +12,8 @@ After first-time setup, Dialog Lab opens on the **Topics** tab. Open it anytime 
 
 Dialog Lab explains: *"Add a thumbs up or down… Any topics that you have marked could be chosen to discuss."*
 
+{% docShot "topics.webp", "Topics tab with stance cards", "Browse and mark topics" %}
+
 ## How to mark a stance
 
 You will only be matched on topics where you have marked a stance. If you leave a topic unmarked, it will not be used for matchmaking.
@@ -28,6 +30,8 @@ Topics rotate over time. In **Profile → Viewpoints**, you can review:
 
 - **Active Topics** — currently available for matching.
 - **Expired Viewpoints** — topics you previously marked that are no longer in rotation.
+
+{% docShot "profile-viewpoints.webp", "Profile Viewpoints showing active and expired topics", "Your viewpoints" %}
 
 To add new active topics, return to the Topics tab and mark stances on issues you have not marked yet.
 

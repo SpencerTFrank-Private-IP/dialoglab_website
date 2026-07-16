@@ -42,18 +42,30 @@ As your search progresses, the lobby may show different states:
 | **We'll notify you** | You can leave the app — Dialog Lab will push a notification when a match is found. |
 | **Match preview** | A partner was found. Review the topic and stances before chat opens. |
 
+<div class="beta-docs__shots">
+  {% docShot "matchmaking-searching.webp", "Searching for a partner lobby state", "Searching" %}
+  {% docShot "matchmaking-taking-a-while.webp", "Taking a while lobby state", "Taking a while" %}
+  {% docShot "matchmaking-notify.webp", "We'll notify you lobby state", "We'll notify you" %}
+</div>
+
 <div class="beta-docs__callout beta-docs__callout--warning">
   <strong>Notifications required to leave</strong>
   If you denied notification permission, you must keep the app open while searching. The lobby will prompt you to enable notifications in Settings.
 </div>
 
+{% docShot "matchmaking-need-notifications-on.webp", "Prompt to enable notifications while matching", "Enable notifications" %}
+
 ## Match preview
 
 Before chat begins, you see which topic was selected and each person's viewpoint — for example, "You supported this" and your partner opposed it. A short countdown gives both people time to prepare, then you are taken directly into the chat.
 
+{% docShot "matchmaking-match-preview.webp", "Match preview with topic and opposing stances", "Match preview" %}
+
 ## If your match cancels
 
 Sometimes a partner declines or cancels before chat starts. Dialog Lab returns you to searching automatically. This is normal during the beta when the matchable pool is small.
+
+{% docShot "matchmaking-match-cancelled.webp", "Match cancelled screen returning you to search", "Match cancelled" %}
 
 ## How preferences affect pairing
 

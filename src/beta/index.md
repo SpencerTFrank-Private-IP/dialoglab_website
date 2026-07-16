@@ -19,6 +19,13 @@ Dialog Lab pairs you one-on-one with someone who holds a different view on a top
 
 Sign in with the **same email** you used to join the beta waitlist.
 
+<div class="beta-docs__shots">
+  {% docShot "appstore-testflight.webp", "TestFlight in the App Store", "Install TestFlight first" %}
+  {% docShot "testflight-app-detail.webp", "Dialog Lab in TestFlight", "Then install Dialog Lab" %}
+  {% docShot "home-screen-icon.webp", "Dialog Lab icon on the iPhone Home Screen", "Find it on your Home Screen" %}
+  {% docShot "firstrun-splash.webp", "Dialog Lab splash screen", "Open the app" %}
+</div>
+
 ## First-time setup
 
 On first launch, walk through onboarding (a few minutes, once):
@@ -28,7 +35,18 @@ On first launch, walk through onboarding (a few minutes, once):
 3. Set matching preferences: Response Speed (Slow/Fast) and Convo Style (Casual/Debate).
 4. Review the [Rules of Engagement](/beta/moderation/), enable notifications, and accept the terms.
 
+<div class="beta-docs__shots">
+  {% docShot "firstrun-account-enter-email.webp", "Enter email during onboarding", "Email" %}
+  {% docShot "firstrun-account-activation-code-sent.webp", "Activation code screen", "Activation code" %}
+  {% docShot "firstrun-create-profile.webp", "Create profile with username and avatar", "Profile" %}
+  {% docShot "firstrun-matching-prefs.webp", "Matching preferences for speed and style", "Preferences" %}
+  {% docShot "firstrun-groundrules.webp", "Rules of Engagement during onboarding", "Ground rules" %}
+  {% docShot "firstrun-notification-permission-dialog.webp", "iOS notification permission prompt", "Notifications" %}
+</div>
+
 When onboarding finishes, Dialog Lab opens on the **Topics** tab so you can mark stances right away.
+
+{% docShot "topics.webp", "Topics tab with stance cards", "Topics after setup" %}
 
 You can change avatar, home state, and matching preferences later under **Profile**.
 

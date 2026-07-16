@@ -10,6 +10,8 @@ group: Using the App
 
 The **Profile** tab is your home for account settings and matching preferences. During the beta, you may also see an **Invite a Friend** option.
 
+{% docShot "profile-landing.webp", "Profile tab overview", "Profile home" %}
+
 ## Account Preferences
 
 Under **Profile → Account Preferences**, you can manage:
@@ -26,6 +28,8 @@ Under **Profile → Account Preferences**, you can manage:
 - **Terms of Service** and **Privacy Policy** — legal documents (content may be updated during beta).
 - **Log Out** — sign out of your account on this device.
 
+{% docShot "profile-acct-prefs.webp", "Account Preferences screen", "Account preferences" %}
+
 <div class="beta-docs__callout beta-docs__callout--info">
   <strong>App version</strong>
   Account Preferences shows this beta version. Reference this when reporting bugs.
@@ -38,6 +42,8 @@ Under **Profile → Matching Preferences**, update the same settings from onboar
 - **Response Speed** — Slow or Fast. Affects how quickly you are expected to reply.
 - **Convo Style** — Casual or Debate. Shapes the moderator's tone and how rigorously the conversation is structured.
 
+{% docShot "profile-matching-prefs.webp", "Matching Preferences for response speed and convo style", "Matching preferences" %}
+
 Changes apply to future matches. They do not affect conversations already in progress.
 
 ## Viewpoints
@@ -47,7 +53,15 @@ Changes apply to future matches. They do not affect conversations already in pro
 - **Active Topics** — eligible for current matchmaking.
 - **Expired Viewpoints** — topics no longer in rotation.
 
+{% docShot "profile-viewpoints.webp", "Viewpoints list of active and expired topics", "Your viewpoints" %}
+
 To add or change stances, vote on topics in the Topics tab.
+
+## Invite a Friend
+
+During the beta you may see **Invite a Friend** on the Profile tab. Use it to share an invite with someone you think would make a good conversation partner.
+
+{% docShot "profile-invite-friend.webp", "Invite a Friend screen", "Invite a friend" %}
 
 ## What is next?
 

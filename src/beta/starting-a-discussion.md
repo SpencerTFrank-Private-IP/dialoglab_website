@@ -23,16 +23,23 @@ From the **Convos** tab:
 2. Dialog Lab begins searching for a partner with an opposing view on a shared topic.
 3. While you wait, the card updates to show your search status. You can add more topics or choose to be notified when a match is found.
 
+<div class="beta-docs__shots">
+  {% docShot "convos-topics-chosen.webp", "Convos tab ready to get matched", "Ready to match" %}
+  {% docShot "convos-still-looking-hero.webp", "Convos tab while still looking for a partner", "Still looking" %}
+</div>
+
 See [Matchmaking](/beta/matchmaking/) for a deeper look at waiting states and notifications.
 
 <div class="beta-docs__callout beta-docs__callout--info">
   <strong>Wait time expectations</strong>
-  In the beta, the match-making wait-time will be slow because we have a small cohort of beta testers. When the platform is released to the public and there are more users, the wait-time will dramatically decrease. Please, be patient in the beta. 
+  In the beta, the match-making wait-time will be slow because we have a small cohort of beta testers. When the platform is released to the public and there are more users, the wait-time will dramatically decrease. Please, be patient in the beta.
 </div>
 
 ## When a match is found
 
 You will see a **match preview** showing the topic and each person's stance — for example, "You supported this" or "You opposed this." A short countdown gives you time to prepare before the chat opens.
+
+{% docShot "matchmaking-match-preview.webp", "Match preview with topic and stances", "Match preview" %}
 
 <div class="beta-docs__callout beta-docs__callout--info">
   <strong>Do not miss your match</strong>
@@ -46,6 +53,8 @@ When the countdown finishes, you are taken directly into the conversation — no
 - Sets ground rules for the discussion.
 - Names who supports and who opposes the topic.
 - Adapts to your matching preferences (casual vs debate style).
+
+{% docShot "chat-intro.webp", "Chat opening with AI moderator messages", "AI moderator opens the chat" %}
 
 You will then be prompted to share **what you hope to get out** of the conversation and **why you hold your view** — your opening statement. Take your time. Your partner may still be composing theirs.
 

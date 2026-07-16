@@ -24,6 +24,39 @@ module.exports = function (eleventyConfig) {
     };
   });
 
+  // Clickable doc screenshot → Alpine lightbox (openLightbox on body)
+  eleventyConfig.addShortcode("docShot", (filename, alt, caption = "") => {
+    const url = eleventyConfig.getFilter("url");
+    const src = url(`/assets/images/docs/${filename}`);
+    const esc = (value) =>
+      String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    const safeAlt = esc(alt);
+    const captionHtml = caption
+      ? `\n  <figcaption class="beta-docs__figcaption">${esc(caption)}</figcaption>`
+      : "";
+    return `<figure class="beta-docs__figure">
+  <button
+    type="button"
+    class="beta-docs__shot"
+    aria-label="Enlarge screenshot: ${safeAlt}"
+    x-on:click="openLightbox($event.currentTarget.querySelector('img'))"
+  >
+    <img
+      src="${src}"
+      alt="${safeAlt}"
+      width="900"
+      height="1840"
+      loading="lazy"
+      decoding="async"
+    />
+  </button>${captionHtml}
+</figure>`;
+  });
+
   // Add id attributes to markdown headings for in-page anchors
   const markdownIt = require("markdown-it");
   const md = markdownIt({ html: true, linkify: true }).use((markdown) => {

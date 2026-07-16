@@ -44,7 +44,24 @@
     })
   </script>
 </head>
-<body class="page-new beta-docs text-brand font-sans antialiased" x-data="{ sidebarOpen: false }" x-on:keydown.escape.window="sidebarOpen = false">
+<body
+  class="page-new beta-docs text-brand font-sans antialiased"
+  x-data="{
+    sidebarOpen: false,
+    lightbox: null,
+    openLightbox(img) {
+      if (!img) return;
+      this.lightbox = { src: img.currentSrc || img.src, alt: img.alt || '' };
+      document.documentElement.classList.add('beta-docs--lightbox-open');
+      this.$nextTick(() => this.$refs.lightboxClose && this.$refs.lightboxClose.focus());
+    },
+    closeLightbox() {
+      this.lightbox = null;
+      document.documentElement.classList.remove('beta-docs--lightbox-open');
+    }
+  }"
+  x-on:keydown.escape.window="lightbox ? closeLightbox() : (sidebarOpen = false)"
+>
   <div class="page-new__backdrop" aria-hidden="true">
     <div class="page-new__bg"></div>
     <div class="page-new__scrim"></div>
@@ -55,6 +72,37 @@
   <main class="page-new__content beta-docs__main">
     {{ content | safe }}
   </main>
+
+  <div
+    class="beta-docs__lightbox"
+    x-show="lightbox"
+    x-cloak
+    x-transition.opacity.duration.200ms
+    role="dialog"
+    aria-modal="true"
+    x-bind:aria-label="lightbox ? ('Screenshot: ' + lightbox.alt) : 'Screenshot'"
+    x-on:click="closeLightbox()"
+  >
+    <button
+      type="button"
+      class="beta-docs__lightbox-close"
+      x-ref="lightboxClose"
+      x-on:click.stop="closeLightbox()"
+      aria-label="Close screenshot"
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <figure class="beta-docs__lightbox-figure" x-on:click.stop>
+      <img
+        class="beta-docs__lightbox-img"
+        x-bind:src="lightbox ? lightbox.src : ''"
+        x-bind:alt="lightbox ? lightbox.alt : ''"
+      />
+      <figcaption class="beta-docs__lightbox-hint" x-text="lightbox ? lightbox.alt : ''"></figcaption>
+    </figure>
+  </div>
 
   <script>
     (function () {

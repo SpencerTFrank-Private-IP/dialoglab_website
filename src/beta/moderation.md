@@ -23,6 +23,8 @@ Effective moderation takes both trust and skill. Our AI moderator:
   <li>Makes sure you both get your turn</li>
 </ol>
 
+{% docShot "chat-intro.webp", "AI moderator opening messages in a conversation", "Moderator in chat" %}
+
 ## Rules of Engagement
 
 During onboarding, you agree to four simple ground rules. Keep these in mind throughout every conversation:
@@ -35,6 +37,8 @@ During onboarding, you agree to four simple ground rules. Keep these in mind thr
   <li>Labeling or stereotyping will be flagged</li>
   <li>Slurs and abuse will be blocked</li>
 </ol>
+
+{% docShot "firstrun-groundrules.webp", "Rules of Engagement screen from onboarding", "Ground rules" %}
 
 <div class="beta-docs__callout beta-docs__callout--tip">
   <strong>Screenshot it</strong>

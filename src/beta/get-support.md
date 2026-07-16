@@ -13,6 +13,8 @@ The fastest way to flag a problem with a conversation is from within the app:
 1. **During a chat** — open the menu (⋯) and choose **Report Conversation**.
 2. **After a chat** — complete or skip to the post-conversation review, then choose the report option.
 
+{% docShot "chat-report.webp", "Report Conversation option in the chat menu", "Report from chat" %}
+
 You will be asked: *"Please provide details about what happened. We will review this and the chat log as soon as possible."*
 
 Include as much context as you can — what was said, when it happened, and why it concerned you. The team reviews reports along with the full conversation history.
@@ -33,6 +35,8 @@ For crashes, UI glitches, or other technical problems, the best approach is thro
 2. Tap the **Share** button.
 3. Choose **TestFlight Feedback** from the share sheet.
 4. Add a short description of what went wrong and send.
+
+{% docShot "testflight-app-detail.webp", "Dialog Lab listing in TestFlight", "TestFlight feedback" %}
 
 Include your app version (shown in **Profile → Account Preferences**) in the feedback if you can.
 
