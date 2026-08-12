@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["T7FDBL5B92.com.lab.dialogue.DialogueLab"],
+        "components": [
+          { "/": "/topics/*" }
+        ]
+      }
+    ]
+  }
+}

@@ -3,6 +3,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/css/style.css");
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  // Universal Links (AASA) — must be extensionless JSON at both paths
+  eleventyConfig.addPassthroughCopy("src/.well-known");
+  eleventyConfig.addPassthroughCopy("src/apple-app-site-association");
 
   eleventyConfig.addCollection("betaDocs", (api) =>
     api
