@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light only" />
   <meta name="description" content="{{ description or 'Be heard' }}" />
+  {% if noindex %}
+  <meta name="robots" content="noindex" />
+  {% endif %}
 
   <meta property="og:site_name" content="Dialog Lab" />
   <meta property="og:title" content="{{ title or 'Dialog Lab' }}" />

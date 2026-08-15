@@ -1877,6 +1877,40 @@
     }
   }
 
+  .not-found {
+    text-align: center;
+  }
+
+  .not-found .legal-doc__subtitle {
+    margin-bottom: 24px;
+  }
+
+  .not-found__cta {
+    display: inline-block;
+    border-radius: 1000px;
+    background: #4f1658;
+    padding: 16px 36px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    box-shadow: 0 8px 40px rgb(0 0 0 / 12%);
+    transition: background-color 150ms ease;
+  }
+
+  .not-found__cta:hover {
+    background: var(--color-brand-dark);
+  }
+
+  .not-found__home {
+    display: inline-block;
+    margin-top: 8px;
+    color: #4f1658;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .legal-doc__title {
     margin: 0 0 8px;
     color: #000;

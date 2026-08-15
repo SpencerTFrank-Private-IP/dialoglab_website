@@ -1,0 +1,37 @@
+---
+layout: base-legal.njk
+title: Page not found
+description: That link doesn’t match a page on this site.
+permalink: /404.html
+eleventyExcludeFromCollections: true
+noindex: true
+---
+
+<div class="not-found">
+  <h1 class="legal-doc__title" id="title">Page not found</h1>
+  <p class="legal-doc__subtitle" id="copy">That link doesn’t match a page on this site.</p>
+  <p>
+    <a class="not-found__cta" id="cta" href="{{ '/' | url }}">Go to Dialog Lab</a>
+  </p>
+  <p>
+    <a class="not-found__home" href="{{ '/' | url }}">{{ site.url | replace("https://", "") }}</a>
+  </p>
+</div>
+
+<script>
+  (function () {
+    var match = location.pathname.match(
+      /^\/topics\/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})\/?$/
+    );
+    if (!match) return;
+    var appURL = "dialoguelab://topics/" + match[1];
+    document.title = "Open in Dialog Lab";
+    document.getElementById("title").textContent = "Continue in Dialog Lab";
+    document.getElementById("copy").textContent =
+      "This topic opens in the Dialog Lab app. Tap below if it doesn’t open automatically.";
+    var cta = document.getElementById("cta");
+    cta.textContent = "Open in Dialog Lab";
+    cta.setAttribute("href", appURL);
+    window.location.replace(appURL);
+  })();
+</script>
