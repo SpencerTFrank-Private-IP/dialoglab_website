@@ -1,0 +1,26 @@
+---
+layout: base-demo.njk
+title: Demo
+description: Try a Dialog Lab conversation demo in your browser.
+permalink: /demo/
+eleventyExcludeFromCollections: true
+noindex: true
+---
+
+<section class="page-demo__stage" aria-label="App demo">
+  <h1 class="sr-only">Dialog Lab demo</h1>
+
+  <div class="page-demo__bezel">
+    <div class="page-demo__frame">
+      <iframe
+        class="page-demo__iframe"
+        title="Dialog Lab demo"
+        src="{{ site.demoUrl }}"
+        width="393"
+        height="852"
+        loading="lazy"
+        allow="clipboard-write"
+      ></iframe>
+    </div>
+  </div>
+</section>

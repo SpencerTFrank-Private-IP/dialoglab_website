@@ -2055,4 +2055,134 @@
   .legal-doc__footer a {
     color: #3030f1;
   }
+
+  /* Demo embed page (/demo) */
+  .page-demo__main {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    padding: 64px 0 48px;
+  }
+
+  .page-demo__close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.72);
+    color: #4f1658;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 12px rgb(79 22 88 / 0.1);
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .page-demo__close:hover {
+    background: #fff;
+    color: #3e0946;
+  }
+
+  .page-demo__close:focus-visible {
+    outline: 2px solid #4f1658;
+    outline-offset: 3px;
+  }
+
+  .page-demo__close svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .page-demo__close {
+      top: 24px;
+      right: 24px;
+    }
+  }
+
+  .page-demo__stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    padding-inline: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .page-demo__stage {
+      max-width: none;
+      padding-inline: 36pt;
+    }
+  }
+
+  /* Host-side phone shell — mirrors dl-web-demo device tokens */
+  .page-demo__bezel {
+    width: 100%;
+    max-width: 415px; /* 393 screen + 11px bezel × 2 */
+    padding: 11px;
+    border-radius: 58px;
+    background: #0a0a0c;
+    box-sizing: border-box;
+  }
+
+  .page-demo__frame {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-radius: 47px;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent;
+  }
+
+  .page-demo__iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 393 / 852;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  /* Narrow host: full-bleed — no phone-in-phone */
+  @media (max-width: 480px) {
+    .page-demo__main {
+      padding: 0;
+    }
+
+    .page-demo__stage {
+      max-width: none;
+      padding-inline: 0;
+    }
+
+    .page-demo__bezel {
+      max-width: none;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .page-demo__frame {
+      border-radius: 0;
+    }
+
+    .page-demo__iframe {
+      height: 100dvh;
+      aspect-ratio: auto;
+    }
+  }
 }
