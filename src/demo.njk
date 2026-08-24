@@ -1,26 +1,20 @@
 ---
-layout: base-demo.njk
-title: Demo
-description: Try a Dialog Lab conversation demo in your browser.
 permalink: /demo/
 eleventyExcludeFromCollections: true
-noindex: true
 ---
-
-<section class="page-demo__stage" aria-label="App demo">
-  <h1 class="sr-only">Dialog Lab demo</h1>
-
-  <div class="page-demo__bezel">
-    <div class="page-demo__frame">
-      <iframe
-        class="page-demo__iframe"
-        title="Dialog Lab demo"
-        src="{{ site.demoUrl }}"
-        width="393"
-        height="852"
-        loading="lazy"
-        allow="clipboard-write"
-      ></iframe>
-    </div>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Demo — Dialog Lab</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="{{ site.url }}/?demo=1" />
+  <meta http-equiv="refresh" content="0;url={{ '/' | url }}?demo=1" />
+  <script>
+    location.replace('{{ '/' | url }}?demo=1');
+  </script>
+</head>
+<body>
+  <p><a href="{{ '/' | url }}?demo=1">Continue to Dialog Lab demo</a></p>
+</body>
+</html>

@@ -65,8 +65,92 @@
     {{ content | safe }}
   </main>
 
+  {% if demoOverlay %}
+    {% include "demo-overlay.njk" %}
+  {% endif %}
+
   <script>
     (function () {
+      var overlay = document.getElementById('demo-overlay');
+      var openers = document.querySelectorAll('[data-demo-open]');
+      var closers = document.querySelectorAll('[data-demo-close]');
+      var lastFocus = null;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function isOpen() {
+        return overlay && overlay.classList.contains('is-open');
+      }
+
+      function setParam(open) {
+        try {
+          var url = new URL(location.href);
+          if (open) url.searchParams.set('demo', '1');
+          else url.searchParams.delete('demo');
+          history.replaceState(null, '', url.pathname + url.search + url.hash);
+        } catch (e) {}
+      }
+
+      function openDemo(opts) {
+        if (!overlay || isOpen()) return;
+        opts = opts || {};
+        lastFocus = document.activeElement;
+        overlay.inert = false;
+        overlay.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('page-demo-overlay-open');
+        void overlay.offsetWidth;
+        overlay.classList.add('is-open');
+        if (!opts.skipParam) setParam(true);
+        var closeBtn = overlay.querySelector('[data-demo-close]');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeDemo(opts) {
+        if (!overlay || !isOpen()) return;
+        opts = opts || {};
+        overlay.classList.remove('is-open');
+        document.documentElement.classList.remove('page-demo-overlay-open');
+        if (!opts.skipParam) setParam(false);
+
+        function afterFade() {
+          overlay.inert = true;
+          overlay.setAttribute('aria-hidden', 'true');
+          if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        }
+
+        if (reduceMotion) afterFade();
+        else setTimeout(afterFade, 320);
+      }
+
+      openers.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          openDemo();
+        });
+      });
+
+      closers.forEach(function (el) {
+        el.addEventListener('click', function () {
+          closeDemo();
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isOpen()) {
+          e.preventDefault();
+          closeDemo();
+        }
+      });
+
+      // Deep link: /?demo=1 or legacy /demo redirect
+      try {
+        var params = new URLSearchParams(location.search);
+        if (params.get('demo') === '1') {
+          openDemo({ skipParam: true });
+        }
+      } catch (e) {}
+
+      window.DialogLabDemo = { open: openDemo, close: closeDemo };
+
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       var root = document.documentElement;

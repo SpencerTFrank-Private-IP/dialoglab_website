@@ -1,0 +1,66 @@
+<div
+  id="demo-overlay"
+  class="page-demo-overlay"
+  aria-hidden="true"
+  inert
+>
+  <div class="page-demo-overlay__scrim" aria-hidden="true"></div>
+
+  <button
+    type="button"
+    class="page-demo__close"
+    data-demo-close
+    aria-label="Close demo"
+  >
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" fill="#8E8E93"/>
+      <path d="M8.2 8.2l7.6 7.6M15.8 8.2l-7.6 7.6" stroke="#fff" stroke-width="1.75" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="page-demo-overlay__main" role="dialog" aria-modal="true" aria-label="Dialog Lab demo">
+    <div class="page-demo__stage">
+      <div class="page-demo__phone">
+        <div class="page-demo__bezel">
+          <div class="page-demo__frame">
+            <iframe
+              id="demo-overlay-iframe"
+              class="page-demo__iframe"
+              title="Dialog Lab demo"
+              src="{{ site.demoUrl }}"
+              width="393"
+              height="852"
+              allow="clipboard-write"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <aside class="page-demo__aside">
+        <div class="page-demo__brand">
+          <img
+            class="page-demo__brand-mark"
+            src="{{ '/assets/images/footer-mark.svg' | url }}"
+            alt=""
+            width="63"
+            height="51"
+            decoding="async"
+          />
+          <p class="page-demo__brand-wordmark">Dialog Lab</p>
+        </div>
+
+        {% if site.showAppStoreBadge %}
+        <a class="page-demo__badge" href="{{ site.appStoreUrl or '#' }}">
+          <img
+            src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 1.svg' | url }}"
+            alt="Download on the App Store"
+            width="140"
+            height="47"
+            decoding="async"
+          />
+        </a>
+        {% endif %}
+      </aside>
+    </div>
+  </div>
+</div>

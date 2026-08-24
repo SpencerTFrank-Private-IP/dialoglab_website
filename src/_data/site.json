@@ -2,5 +2,7 @@
   "url": "https://joindialoglab.com",
   "gaId": "G-X2SC1SLY9Q",
   "posthogId": "phc_BVNCjC4HKvbUogUi2JM7RPz8ydB2FZwGESsrnxRT7kki",
-  "demoUrl": "https://dl-web-demo.fly.dev/"
+  "demoUrl": "https://dl-web-demo.fly.dev/",
+  "appStoreUrl": "#",
+  "showAppStoreBadge": false
 }
