@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if richLinkFallback %} prefix="og: https://ogp.me/ns#"{% endif %}>
 <head>
-  <title>{{ title or "Dialog Lab" }}</title>
+  <title>{% if richLinkFallback %}Dialog Lab{% else %}{{ title or "Dialog Lab" }}{% endif %}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light only" />
-  <meta name="description" content="{{ description or 'Be heard' }}" />
   {% if noindex %}
   <meta name="robots" content="noindex" />
   {% endif %}
 
+  {% if richLinkFallback %}
+  {% include "rich-link-og.njk" %}
+  {% else %}
+  <meta name="description" content="{{ description or 'Be heard' }}" />
   <meta property="og:site_name" content="Dialog Lab" />
   <meta property="og:title" content="{{ title or 'Dialog Lab' }}" />
   <meta property="og:type" content="website" />
@@ -20,8 +23,9 @@
   <meta property="og:image:height" content="1260" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
   <meta property="twitter:card" content="summary_large_image" />
-
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  {% endif %}
+
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | url }}" />
   <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | url }}" />
 
