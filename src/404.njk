@@ -21,18 +21,47 @@ richLinkFallback: true
 
 <script>
   (function () {
+    // Interim: marketing site until the App Store product page ships.
+    // Keep in sync with TopicDeepLink.appStoreURL / websiteURL in the iOS app.
+    var WEBSITE_URL = "{{ site.url }}/";
+    var APP_STORE_URL = WEBSITE_URL;
+
     var match = location.pathname.match(
       /^\/topics\/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})\/?$/
     );
     if (!match) return;
-    var appURL = "dialoguelab://topics/" + match[1];
-    document.title = "Open in Dialog Lab";
+
+    var topicId = match[1];
+    var appURL = "dialoguelab://topics/" + topicId;
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+      || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    document.title = "Check out this topic on Dialog Lab";
     document.getElementById("title").textContent = "Continue in Dialog Lab";
-    document.getElementById("copy").textContent =
-      "This topic opens in the Dialog Lab app. Tap below if it doesn’t open automatically.";
+
     var cta = document.getElementById("cta");
-    cta.textContent = "Open in Dialog Lab";
-    cta.setAttribute("href", appURL);
-    window.location.replace(appURL);
+    var copy = document.getElementById("copy");
+
+    if (isIOS) {
+      copy.textContent =
+        "This topic opens in the Dialog Lab app. Tap below if it doesn’t open automatically.";
+      cta.textContent = "Open in Dialog Lab";
+      cta.setAttribute("href", appURL);
+      // Hop into the app when installed; after a beat, offer the App Store
+      // (or marketing site until the listing is live) for everyone else.
+      window.location.replace(appURL);
+      setTimeout(function () {
+        cta.textContent = "Get Dialog Lab";
+        cta.setAttribute("href", APP_STORE_URL);
+        copy.textContent =
+          "Don’t have the app yet? Grab Dialog Lab and open this topic from there.";
+      }, 1200);
+    } else {
+      copy.textContent =
+        "Dialog Lab is an iOS app. Visit the site to learn more and join the beta.";
+      cta.textContent = "Visit Dialog Lab";
+      cta.setAttribute("href", WEBSITE_URL);
+      window.location.replace(WEBSITE_URL);
+    }
   })();
 </script>
