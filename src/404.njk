@@ -26,6 +26,43 @@ richLinkFallback: true
     var WEBSITE_URL = "{{ site.url }}/";
     var APP_STORE_URL = WEBSITE_URL;
 
+    function deviceContext() {
+      var ua = navigator.userAgent || "";
+      var platform = navigator.platform || "";
+      var maxTouch = navigator.maxTouchPoints || 0;
+      var isIOS = /iPad|iPhone|iPod/.test(ua)
+        || (platform === "MacIntel" && maxTouch > 1);
+      var isAndroid = /Android/i.test(ua);
+      var isMac = /Macintosh|Mac OS X/i.test(ua) && !isIOS;
+      var isWindows = /Windows/i.test(ua);
+      var isIPad = /iPad/.test(ua) || (platform === "MacIntel" && maxTouch > 1);
+      var isIPhone = /iPhone|iPod/.test(ua);
+      var isMobileUA = /Mobi|Android/i.test(ua);
+
+      var deviceOs = "other";
+      if (isIOS) deviceOs = "iOS";
+      else if (isAndroid) deviceOs = "Android";
+      else if (isMac) deviceOs = "macOS";
+      else if (isWindows) deviceOs = "Windows";
+      else if (/Linux/i.test(ua)) deviceOs = "Linux";
+
+      var deviceType = "desktop";
+      if (isIPad || (/Android/i.test(ua) && !/Mobile/i.test(ua))) deviceType = "tablet";
+      else if (isIPhone || isMobileUA) deviceType = "mobile";
+
+      return { device_os: deviceOs, device_type: deviceType, is_ios: isIOS };
+    }
+
+    function track(eventName, props) {
+      try {
+        if (window.posthog && typeof window.posthog.capture === "function") {
+          window.posthog.capture(eventName, props);
+        }
+      } catch (err) {
+        // Analytics must never block the open / download path.
+      }
+    }
+
     var match = location.pathname.match(
       /^\/topics\/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})\/?$/
     );
@@ -33,26 +70,58 @@ richLinkFallback: true
 
     var topicId = match[1];
     var appURL = "dialoguelab://topics/" + topicId;
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
-      || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var pageURL = "{{ site.url }}/topics/" + topicId;
+    var ctx = deviceContext();
+    var isIOS = ctx.is_ios;
+
+    var openProps = {
+      viewpoint_id: topicId,
+      device_os: ctx.device_os,
+      device_type: ctx.device_type,
+      page_url: pageURL
+    };
 
     document.title = "Check out this topic on Dialog Lab";
     document.getElementById("title").textContent = "Continue in Dialog Lab";
 
     var cta = document.getElementById("cta");
     var copy = document.getElementById("copy");
+    var currentCtaKind = "visit_site";
+
+    function trackCta(trigger) {
+      track("topic_link_cta_tapped", {
+        viewpoint_id: topicId,
+        device_os: ctx.device_os,
+        device_type: ctx.device_type,
+        cta_kind: currentCtaKind,
+        cta_label: (cta.textContent || "").trim(),
+        cta_trigger: trigger,
+        page_url: pageURL
+      });
+    }
+
+    cta.addEventListener("click", function () {
+      trackCta("tap");
+    });
+
+    track("topic_link_opened", openProps);
 
     if (isIOS) {
       copy.textContent =
         "This topic opens in the Dialog Lab app. Tap below if it doesn’t open automatically.";
       cta.textContent = "Open in Dialog Lab";
       cta.setAttribute("href", appURL);
+      currentCtaKind = "open_app";
       // Hop into the app when installed; after a beat, offer the App Store
       // (or marketing site until the listing is live) for everyone else.
-      window.location.replace(appURL);
+      // Brief delay so the open event can flush before navigation.
+      setTimeout(function () {
+        window.location.replace(appURL);
+      }, 80);
       setTimeout(function () {
         cta.textContent = "Get Dialog Lab";
         cta.setAttribute("href", APP_STORE_URL);
+        currentCtaKind = "get_app";
         copy.textContent =
           "Don’t have the app yet? Grab Dialog Lab and open this topic from there.";
       }, 1200);
@@ -61,7 +130,11 @@ richLinkFallback: true
         "Dialog Lab is an iOS app. Visit the site to learn more and join the beta.";
       cta.textContent = "Visit Dialog Lab";
       cta.setAttribute("href", WEBSITE_URL);
-      window.location.replace(WEBSITE_URL);
+      currentCtaKind = "visit_site";
+      setTimeout(function () {
+        trackCta("auto_redirect");
+        window.location.replace(WEBSITE_URL);
+      }, 80);
     }
   })();
 </script>
