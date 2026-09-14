@@ -2,6 +2,7 @@
 layout: base-new.njk
 title: Dialog Lab
 description: Be heard
+permalink: /v1/
 demoOverlay: true
 ---
 
@@ -103,10 +104,6 @@ demoOverlay: true
     </div>
 
     <div class="page-new__hero-actions">
-      <button type="button" class="page-new__demo-cta" data-demo-open>
-        Try the demo now
-      </button>
-
       <a
         href="{{ site.appStoreUrl or '#' }}"
         class="page-new__hero-store"
@@ -124,6 +121,49 @@ demoOverlay: true
           decoding="async"
         />
       </a>
+
+      <button type="button" class="page-new__demo-ready" data-demo-open aria-label="Open live demo">
+        <span class="page-new__demo-ready-scene" aria-hidden="true">
+          <img
+            class="page-new__demo-ready-city"
+            src="{{ '/assets/images/demo-ready-city.svg' | url }}"
+            alt=""
+            width="1135"
+            height="843"
+            decoding="async"
+          />
+          <img
+            class="page-new__demo-ready-cloud page-new__demo-ready-cloud--left"
+            src="{{ '/assets/images/demo-ready-cloud-left.png' | url }}"
+            alt=""
+            width="277"
+            height="185"
+            decoding="async"
+          />
+          <img
+            class="page-new__demo-ready-cloud page-new__demo-ready-cloud--right"
+            src="{{ '/assets/images/demo-ready-cloud-right.png' | url }}"
+            alt=""
+            width="167"
+            height="111"
+            decoding="async"
+          />
+        </span>
+
+        <span class="page-new__demo-ready-phone">
+          <img
+            class="page-new__demo-ready-screen"
+            src="{{ '/assets/images/demo-ready-phone.jpg' | url }}"
+            alt=""
+            width="352"
+            height="766"
+            decoding="async"
+          />
+          <span class="page-new__demo-ready-cta">
+            <span class="page-new__demo-ready-cta-label">Live Demo</span>
+          </span>
+        </span>
+      </button>
     </div>
   </div>
 </section>
