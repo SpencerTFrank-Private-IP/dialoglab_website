@@ -21,6 +21,9 @@
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | url }}" />
   <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | url }}" />
+  {% if site.appStoreId %}
+  <meta name="apple-itunes-app" content="app-id={{ site.appStoreId }}" />
+  {% endif %}
 
   <link href="https://fonts.googleapis.com/css2?display=swap&family=Montserrat:ital,wght@0,400;1,400" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
@@ -61,7 +64,12 @@
       <a href="#how-it-works" class="font-semibold hover:underline">How the App Works</a>
       <a href="#ai-moderation-principles" class="font-semibold hover:underline">AI Moderation Principles</a>
     </div>
-    <a href="#join-beta" class="shrink-0 rounded-full bg-brand text-white px-4 py-2 text-[0.75em] md:text-[1em] font-bold hover:bg-brand-dark transition-colors">Join the Beta</a>
+    <a
+      href="{{ site.appStoreUrl }}"
+      class="shrink-0 rounded-full bg-brand text-white px-4 py-2 text-[0.75em] md:text-[1em] font-bold hover:bg-brand-dark transition-colors"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Get the App</a>
   </nav>
 
   <div class="snap-y snap-mandatory h-screen overflow-y-scroll">

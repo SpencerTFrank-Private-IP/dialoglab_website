@@ -3,6 +3,7 @@
   "gaId": "G-X2SC1SLY9Q",
   "posthogId": "phc_BVNCjC4HKvbUogUi2JM7RPz8ydB2FZwGESsrnxRT7kki",
   "demoUrl": "https://dl-web-demo.fly.dev/",
-  "appStoreUrl": "#",
-  "showAppStoreBadge": false
+  "appStoreUrl": "https://apps.apple.com/us/app/dialog-lab/id6779762271",
+  "appStoreId": "6779762271",
+  "showAppStoreBadge": true
 }

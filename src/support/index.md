@@ -17,6 +17,8 @@ Dialog Lab pairs you one-on-one with someone who holds a different view on a top
 3. Tap **Get**, then open Dialog Lab.
 4. Allow notifications when prompted — you will need them to hear about matches.
 
+{% docShot "app-store.png", "Dialog Lab listing in the App Store", "Get Dialog Lab" %}
+
 ## First-time setup
 
 On first launch, walk through onboarding (a few minutes, once):

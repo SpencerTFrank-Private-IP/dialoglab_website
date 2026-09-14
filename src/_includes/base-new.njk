@@ -21,6 +21,9 @@
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | url }}" />
   <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | url }}" />
+  {% if site.appStoreId %}
+  <meta name="apple-itunes-app" content="app-id={{ site.appStoreId }}" />
+  {% endif %}
 
   <link href="https://fonts.googleapis.com/css2?display=swap&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />

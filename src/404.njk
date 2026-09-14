@@ -21,10 +21,9 @@ richLinkFallback: true
 
 <script>
   (function () {
-    // Interim: marketing site until the App Store product page ships.
     // Keep in sync with TopicDeepLink.appStoreURL / websiteURL in the iOS app.
     var WEBSITE_URL = "{{ site.url }}/";
-    var APP_STORE_URL = WEBSITE_URL;
+    var APP_STORE_URL = {{ site.appStoreUrl | dump | safe }};
 
     function deviceContext() {
       var ua = navigator.userAgent || "";
@@ -113,7 +112,7 @@ richLinkFallback: true
       cta.setAttribute("href", appURL);
       currentCtaKind = "open_app";
       // Hop into the app when installed; after a beat, offer the App Store
-      // (or marketing site until the listing is live) for everyone else.
+      // for everyone else.
       // Brief delay so the open event can flush before navigation.
       setTimeout(function () {
         window.location.replace(appURL);
@@ -127,7 +126,7 @@ richLinkFallback: true
       }, 1200);
     } else {
       copy.textContent =
-        "Dialog Lab is an iOS app. Visit the site to learn more and join the beta.";
+        "Dialog Lab is an iOS app. Visit the site to learn more, or download it on iPhone.";
       cta.textContent = "Visit Dialog Lab";
       cta.setAttribute("href", WEBSITE_URL);
       currentCtaKind = "visit_site";
