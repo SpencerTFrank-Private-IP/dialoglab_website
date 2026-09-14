@@ -102,14 +102,15 @@ demoOverlay: true
       </div>
     </div>
 
-    <div class="page-new__hero-actions">
-      <button type="button" class="page-new__demo-cta" data-demo-open>
+    <div class="page-new__hero-actions" data-hero-variant="control">
+      <button type="button" class="page-new__demo-cta" data-demo-open data-track-demo="control">
         Try the demo now
       </button>
 
       <a
         href="{{ site.appStoreUrl or '#' }}"
         class="page-new__hero-store"
+        data-track-appstore="control"
         {% if site.appStoreUrl and site.appStoreUrl != '#' %}
         target="_blank"
         rel="noopener noreferrer"
@@ -124,6 +125,70 @@ demoOverlay: true
           decoding="async"
         />
       </a>
+    </div>
+
+    <div class="page-new__hero-actions" data-hero-variant="v1" hidden>
+      <a
+        href="{{ site.appStoreUrl or '#' }}"
+        class="page-new__hero-store"
+        data-track-appstore="v1"
+        {% if site.appStoreUrl and site.appStoreUrl != '#' %}
+        target="_blank"
+        rel="noopener noreferrer"
+        {% endif %}
+      >
+        <img
+          class="page-new__hero-store-badge"
+          src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+          alt="Download on the App Store"
+          width="200"
+          height="67"
+          decoding="async"
+        />
+      </a>
+
+      <button type="button" class="page-new__demo-ready" data-demo-open data-track-demo="v1" aria-label="Open live demo">
+        <span class="page-new__demo-ready-scene" aria-hidden="true">
+          <img
+            class="page-new__demo-ready-city"
+            src="{{ '/assets/images/demo-ready-city.svg' | url }}"
+            alt=""
+            width="1135"
+            height="843"
+            decoding="async"
+          />
+          <img
+            class="page-new__demo-ready-cloud page-new__demo-ready-cloud--left"
+            src="{{ '/assets/images/demo-ready-cloud-left.png' | url }}"
+            alt=""
+            width="277"
+            height="185"
+            decoding="async"
+          />
+          <img
+            class="page-new__demo-ready-cloud page-new__demo-ready-cloud--right"
+            src="{{ '/assets/images/demo-ready-cloud-right.png' | url }}"
+            alt=""
+            width="167"
+            height="111"
+            decoding="async"
+          />
+        </span>
+
+        <span class="page-new__demo-ready-phone">
+          <img
+            class="page-new__demo-ready-screen"
+            src="{{ '/assets/images/demo-ready-phone.jpg' | url }}"
+            alt=""
+            width="352"
+            height="766"
+            decoding="async"
+          />
+          <span class="page-new__demo-ready-cta">
+            <span class="page-new__demo-ready-cta-label">Live Demo</span>
+          </span>
+        </span>
+      </button>
     </div>
   </div>
 </section>
@@ -220,3 +285,67 @@ demoOverlay: true
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var FLAG_KEY = 'homepage-hero';
+    var applied = false;
+    var resolvedVariant = 'control';
+    var appStoreUrl = "{{ site.appStoreUrl or '#' }}";
+
+    function isIOS() {
+      var ua = navigator.userAgent || "";
+      var platform = navigator.platform || "";
+      var maxTouch = navigator.maxTouchPoints || 0;
+      return /iPad|iPhone|iPod/.test(ua) || (platform === "MacIntel" && maxTouch > 1);
+    }
+
+    var eligible = isIOS();
+
+    function applyVariant(variant) {
+      if (applied) return;
+
+      if (variant === 'direct' && appStoreUrl && appStoreUrl !== '#') {
+        applied = true;
+        if (window.posthog) {
+          posthog.capture('app_store_click', { variant: 'direct', homepage_hero: 'direct', location: 'redirect', device_os: 'iOS' });
+        }
+        window.location.replace(appStoreUrl);
+        return;
+      }
+
+      resolvedVariant = variant === 'v1' ? 'v1' : 'control';
+      applied = true;
+      document.querySelectorAll('[data-hero-variant]').forEach(function (el) {
+        el.hidden = el.getAttribute('data-hero-variant') !== resolvedVariant;
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      var appStoreEl = e.target.closest('[data-track-appstore]');
+      if (appStoreEl) {
+        var clickLocation = appStoreEl.getAttribute('data-track-appstore');
+        var variant = clickLocation === 'nav' ? resolvedVariant : clickLocation;
+        if (window.posthog) posthog.capture('app_store_click', { variant: variant, homepage_hero: variant, location: clickLocation, device_os: eligible ? 'iOS' : 'other' });
+      }
+
+      var demoEl = e.target.closest('[data-track-demo]');
+      if (demoEl) {
+        var demoVariant = demoEl.getAttribute('data-track-demo');
+        if (window.posthog) posthog.capture('demo_open', { variant: demoVariant, homepage_hero: demoVariant, device_os: eligible ? 'iOS' : 'other' });
+      }
+    });
+
+    // This experiment only targets iOS visitors — everyone else always sees control.
+    if (!eligible) return;
+
+    if (window.posthog) {
+      posthog.onFeatureFlags(function () {
+        applyVariant(posthog.getFeatureFlag(FLAG_KEY));
+      });
+    }
+
+    // Fallback: if PostHog hasn't resolved flags shortly, show control so the page isn't blank.
+    setTimeout(function () { applyVariant(resolvedVariant); }, 1200);
+  })();
+</script>
