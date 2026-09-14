@@ -268,7 +268,6 @@ demoOverlay: true
     var FLAG_KEY = 'homepage-hero';
     var applied = false;
     var resolvedVariant = 'control';
-    var appStoreUrl = "{{ site.appStoreUrl or '#' }}";
 
     function isIOS() {
       var ua = navigator.userAgent || "";
@@ -281,15 +280,6 @@ demoOverlay: true
 
     function applyVariant(variant) {
       if (applied) return;
-
-      if (variant === 'direct' && appStoreUrl && appStoreUrl !== '#') {
-        applied = true;
-        if (window.posthog) {
-          posthog.capture('app_store_click', { variant: 'direct', homepage_hero: 'direct', location: 'redirect', device_os: 'iOS' });
-        }
-        window.location.replace(appStoreUrl);
-        return;
-      }
 
       resolvedVariant = variant === 'v1' ? 'v1' : 'control';
       applied = true;
