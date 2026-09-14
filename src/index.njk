@@ -270,7 +270,8 @@ demoOverlay: true
     var resolvedVariant = 'control';
     var appStoreCampaignUrls = {
       control: "{{ (site.appStoreCampaignUrls.control or site.appStoreUrl or '#') | safe }}",
-      v1: "{{ (site.appStoreCampaignUrls.v1 or site.appStoreUrl or '#') | safe }}"
+      v1: "{{ (site.appStoreCampaignUrls.v1 or site.appStoreUrl or '#') | safe }}",
+      direct: "{{ (site.appStoreCampaignUrls.direct or site.appStoreUrl or '#') | safe }}"
     };
 
     function isIOS() {
@@ -284,6 +285,15 @@ demoOverlay: true
 
     function applyVariant(variant) {
       if (applied) return;
+
+      if (variant === 'direct' && appStoreCampaignUrls.direct && appStoreCampaignUrls.direct !== '#') {
+        applied = true;
+        if (window.posthog) {
+          posthog.capture('app_store_click', { variant: 'direct', homepage_hero: 'direct', location: 'redirect', device_os: 'iOS' });
+        }
+        window.location.replace(appStoreCampaignUrls.direct);
+        return;
+      }
 
       resolvedVariant = variant === 'v1' ? 'v1' : 'control';
       applied = true;
