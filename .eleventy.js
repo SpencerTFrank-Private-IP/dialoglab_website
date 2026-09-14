@@ -14,9 +14,16 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   );
 
-  eleventyConfig.addFilter("betaNeighbors", (order, betaDocs = []) => {
-    const hub = { data: { order: 1, title: "Quick Start" }, url: "/beta/" };
-    const all = [hub, ...betaDocs].sort(
+  eleventyConfig.addCollection("supportDocs", (api) =>
+    api
+      .getFilteredByGlob("src/support/**/*.md")
+      .filter((page) => page.url !== "/support/")
+      .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  );
+
+  const neighborsFor = (hubUrl) => (order, docs = []) => {
+    const hub = { data: { order: 1, title: "Quick Start" }, url: hubUrl };
+    const all = [hub, ...docs].sort(
       (a, b) => (a.data.order || 0) - (b.data.order || 0)
     );
     const idx = all.findIndex((doc) => doc.data.order === order);
@@ -25,21 +32,25 @@ module.exports = function (eleventyConfig) {
       prev: idx > 0 ? all[idx - 1] : null,
       next: idx < all.length - 1 ? all[idx + 1] : null,
     };
-  });
+  };
+
+  eleventyConfig.addFilter("betaNeighbors", neighborsFor("/beta/"));
+  eleventyConfig.addFilter("supportNeighbors", neighborsFor("/support/"));
+
+  const escHtml = (value) =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
 
   // Clickable doc screenshot → Alpine lightbox (openLightbox on body)
   eleventyConfig.addShortcode("docShot", (filename, alt, caption = "") => {
     const url = eleventyConfig.getFilter("url");
     const src = url(`/assets/images/docs/${filename}`);
-    const esc = (value) =>
-      String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/"/g, "&quot;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-    const safeAlt = esc(alt);
+    const safeAlt = escHtml(alt);
     const captionHtml = caption
-      ? `\n  <figcaption class="beta-docs__figcaption">${esc(caption)}</figcaption>`
+      ? `\n  <figcaption class="beta-docs__figcaption">${escHtml(caption)}</figcaption>`
       : "";
     return `<figure class="beta-docs__figure">
   <button
@@ -57,6 +68,20 @@ module.exports = function (eleventyConfig) {
       decoding="async"
     />
   </button>${captionHtml}
+</figure>`;
+  });
+
+  // Placeholder for screenshots that still need to be captured
+  eleventyConfig.addShortcode("docShotTodo", (description, caption = "") => {
+    const safeDesc = escHtml(description);
+    const captionHtml = caption
+      ? `\n  <figcaption class="beta-docs__figcaption">${escHtml(caption)}</figcaption>`
+      : "";
+    return `<figure class="beta-docs__figure beta-docs__figure--todo">
+  <div class="beta-docs__shot-todo" role="img" aria-label="Screenshot needed: ${safeDesc}">
+    <span class="beta-docs__shot-todo-label">Screenshot needed</span>
+    <span class="beta-docs__shot-todo-desc">${safeDesc}</span>
+  </div>${captionHtml}
 </figure>`;
   });
 

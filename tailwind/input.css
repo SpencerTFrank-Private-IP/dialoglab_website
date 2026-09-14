@@ -1226,6 +1226,28 @@
     }
   }
 
+  .beta-docs__topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
+
+  .beta-docs__home-link {
+    color: #4f1658;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    padding: 8px 4px;
+  }
+
+  .beta-docs__home-link:hover {
+    color: #3e0946;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .beta-docs__menu-btn {
     display: inline-flex;
     align-items: center;
@@ -1657,6 +1679,49 @@
     font-weight: 500;
     line-height: 1.35;
     text-align: center;
+  }
+
+  .beta-docs__figure--todo {
+    max-width: 188px;
+  }
+
+  .beta-docs__shot-todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    min-height: 280px;
+    padding: 16px 14px;
+    border: 1.5px dashed rgb(79 22 88 / 0.35);
+    border-radius: 18px;
+    background: rgb(79 22 88 / 0.04);
+    color: #3e0946;
+    text-align: center;
+  }
+
+  .beta-docs__shot-todo-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #4f1658;
+  }
+
+  .beta-docs__shot-todo-desc {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .beta-docs__needs-update {
+    margin: 8px 0 12px;
+    padding: 8px 12px;
+    border-left: 3px solid #b45309;
+    background: rgb(180 83 9 / 0.08);
+    color: #7c2d12;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
   }
 
   .beta-docs__lightbox {
