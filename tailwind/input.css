@@ -1175,6 +1175,11 @@
     line-height: normal;
   }
 
+  .page-new__footer-year {
+    max-width: 20em;
+    text-wrap: balance;
+  }
+
   .page-new__footer-link:hover {
     text-decoration: underline;
   }
@@ -1958,6 +1963,10 @@
   .beta-docs__footer {
     margin-top: 24px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
 
   .beta-docs__footer-text {
