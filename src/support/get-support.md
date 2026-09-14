@@ -33,13 +33,13 @@ For crashes, UI glitches, or other technical problems:
 
 1. **Screenshot** the screen where you encountered the problem.
 2. Note your **app version** (shown in **Profile → Account Preferences**).
-3. Email [spencer@spencerfrank.com](mailto:spencer@spencerfrank.com) with a short description of what went wrong.
+3. Email [spencer@joindialoglab.com](mailto:spencer@joindialoglab.com) with a short description of what went wrong.
 
 You can also leave feedback through the App Store listing if that is easier for you.
 
 ## Email the team
 
-For general questions or issues outside a specific conversation, email [spencer@spencerfrank.com](mailto:spencer@spencerfrank.com).
+For general questions or issues outside a specific conversation, email [spencer@joindialoglab.com](mailto:spencer@joindialoglab.com).
 
 Include your app version and a brief description of the problem.
 
