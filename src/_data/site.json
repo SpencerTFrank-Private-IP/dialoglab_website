@@ -4,6 +4,10 @@
   "posthogId": "phc_BVNCjC4HKvbUogUi2JM7RPz8ydB2FZwGESsrnxRT7kki",
   "demoUrl": "https://dl-web-demo.fly.dev/",
   "appStoreUrl": "https://apps.apple.com/us/app/dialog-lab/id6779762271",
+  "appStoreCampaignUrls": {
+    "control": "https://apps.apple.com/app/apple-store/id6779762271?pt=129032455&ct=control&mt=8",
+    "v1": "https://apps.apple.com/app/apple-store/id6779762271?pt=129032455&ct=variant1&mt=8"
+  },
   "appStoreId": "6779762271",
   "showAppStoreBadge": true
 }

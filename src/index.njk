@@ -108,7 +108,7 @@ demoOverlay: true
       </button>
 
       <a
-        href="{{ site.appStoreUrl or '#' }}"
+        href="{{ site.appStoreCampaignUrls.control or site.appStoreUrl or '#' }}"
         class="page-new__hero-store"
         data-track-appstore="control"
         {% if site.appStoreUrl and site.appStoreUrl != '#' %}
@@ -129,7 +129,7 @@ demoOverlay: true
 
     <div class="page-new__hero-actions" data-hero-variant="v1" hidden>
       <a
-        href="{{ site.appStoreUrl or '#' }}"
+        href="{{ site.appStoreCampaignUrls.v1 or site.appStoreUrl or '#' }}"
         class="page-new__hero-store"
         data-track-appstore="v1"
         {% if site.appStoreUrl and site.appStoreUrl != '#' %}
@@ -268,6 +268,10 @@ demoOverlay: true
     var FLAG_KEY = 'homepage-hero';
     var applied = false;
     var resolvedVariant = 'control';
+    var appStoreCampaignUrls = {
+      control: "{{ (site.appStoreCampaignUrls.control or site.appStoreUrl or '#') | safe }}",
+      v1: "{{ (site.appStoreCampaignUrls.v1 or site.appStoreUrl or '#') | safe }}"
+    };
 
     function isIOS() {
       var ua = navigator.userAgent || "";
@@ -286,6 +290,9 @@ demoOverlay: true
       document.querySelectorAll('[data-hero-variant]').forEach(function (el) {
         el.hidden = el.getAttribute('data-hero-variant') !== resolvedVariant;
       });
+
+      var navLink = document.querySelector('[data-track-appstore="nav"]');
+      if (navLink) navLink.setAttribute('href', appStoreCampaignUrls[resolvedVariant]);
     }
 
     document.addEventListener('click', function (e) {
