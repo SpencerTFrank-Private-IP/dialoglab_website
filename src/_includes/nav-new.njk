@@ -47,11 +47,22 @@
       </a>
     </div>
 
-    <a href="#join-beta" class="page-new__nav-cta">
-      <span class="page-new__nav-cta-label">
-        <span class="page-new__nav-cta-label-full">Join iOS Beta</span>
-        <span class="page-new__nav-cta-label-short">Join</span>
-      </span>
+    <a
+      href="{{ site.appStoreUrl or '#' }}"
+      class="page-new__nav-cta"
+      {% if site.appStoreUrl and site.appStoreUrl != '#' %}
+      target="_blank"
+      rel="noopener noreferrer"
+      {% endif %}
+    >
+      <img
+        class="page-new__nav-cta-badge"
+        src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+        alt="Download on the App Store"
+        width="120"
+        height="40"
+        decoding="async"
+      />
     </a>
   </div>
 

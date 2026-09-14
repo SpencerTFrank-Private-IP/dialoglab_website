@@ -345,10 +345,21 @@
 
   .page-new__nav-cta {
     flex-shrink: 0;
+    display: block;
     padding-block: 8pt;
     padding-inline: 0;
     line-height: 0;
     text-decoration: none;
+    transition: opacity 150ms ease;
+  }
+
+  .page-new__nav-cta:hover {
+    opacity: 0.88;
+  }
+
+  .page-new__nav-cta:focus-visible {
+    outline: 2px solid #4f1658;
+    outline-offset: 3px;
   }
 
   @media (min-width: 768px) {
@@ -357,41 +368,16 @@
     }
   }
 
-  .page-new__nav-cta-label {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1000px;
-    background: #4f1658;
-    padding: 6pt 20pt;
-    color: #fff;
-    font-size: 17pt;
-    font-weight: 500;
-    line-height: normal;
-    transition: background-color 150ms ease;
-  }
-
-  .page-new__nav-cta:hover .page-new__nav-cta-label {
-    background: var(--color-brand-dark);
-  }
-
-  .page-new__nav-cta-label-short {
-    display: inline;
-    font-size: 17px;
-  }
-
-  .page-new__nav-cta-label-full {
-    display: none;
+  .page-new__nav-cta-badge {
+    display: block;
+    width: 108px;
+    height: 36px;
   }
 
   @media (min-width: 768px) {
-    .page-new__nav-cta-label-short {
-      display: none;
-    }
-
-    .page-new__nav-cta-label-full {
-      display: inline;
-      font-size: 17px;
+    .page-new__nav-cta-badge {
+      width: 120px;
+      height: 40px;
     }
   }
 
@@ -636,6 +622,42 @@
       font-size: 34px;
       box-shadow: 0 16px 80px rgb(0 0 0 / 12%);
     }
+  }
+
+  .page-new__hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  @media (min-width: 768px) {
+    .page-new__hero-actions {
+      gap: 32px;
+    }
+  }
+
+  .page-new__hero-store {
+    display: block;
+    line-height: 0;
+    text-decoration: none;
+    transition: opacity 150ms ease;
+  }
+
+  .page-new__hero-store:hover {
+    opacity: 0.88;
+  }
+
+  .page-new__hero-store:focus-visible {
+    outline: 2px solid #4f1658;
+    outline-offset: 3px;
+  }
+
+  .page-new__hero-store-badge {
+    display: block;
+    width: 200px;
+    height: auto;
+    aspect-ratio: 120 / 40;
   }
 
   .page-new__anchor--what,
