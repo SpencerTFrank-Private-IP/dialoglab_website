@@ -309,15 +309,21 @@ demoOverlay: true
         el.hidden = el.getAttribute('data-hero-variant') !== resolvedVariant;
       });
 
-      var navLink = document.querySelector('[data-track-appstore="nav"]');
-      if (navLink) navLink.setAttribute('href', appStoreCampaignUrls[resolvedVariant]);
+      // These badges are shared across variants, so their href must follow whichever
+      // variant actually resolved (unlike the hero badges, which are already scoped).
+      ['nav', 'demo-overlay'].forEach(function (loc) {
+        var el = document.querySelector('[data-track-appstore="' + loc + '"]');
+        if (el) el.setAttribute('href', appStoreCampaignUrls[resolvedVariant]);
+      });
     }
+
+    var SHARED_APPSTORE_LOCATIONS = ['nav', 'demo-overlay'];
 
     document.addEventListener('click', function (e) {
       var appStoreEl = e.target.closest('[data-track-appstore]');
       if (appStoreEl) {
         var clickLocation = appStoreEl.getAttribute('data-track-appstore');
-        var variant = clickLocation === 'nav' ? resolvedVariant : clickLocation;
+        var variant = SHARED_APPSTORE_LOCATIONS.indexOf(clickLocation) !== -1 ? resolvedVariant : clickLocation;
         if (window.posthog) posthog.capture('app_store_click', { variant: variant, homepage_hero: variant, location: clickLocation, device_os: eligible ? 'iOS' : 'other' });
       }
 
