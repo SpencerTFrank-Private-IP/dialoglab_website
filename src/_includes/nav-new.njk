@@ -82,10 +82,10 @@
         {% endif %}
 
         {% if page.url == '/' and site.releaseAnnouncement %}
-        <div class="page-new__release-bubble" role="status">
+        <a href="#join" class="page-new__release-bubble">
           <span class="page-new__release-bubble-pointer" aria-hidden="true"></span>
           <p class="page-new__release-bubble-text">{{ site.releaseAnnouncement }}</p>
-        </div>
+        </a>
         {% endif %}
       </div>
 

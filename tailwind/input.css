@@ -460,7 +460,8 @@
     padding: 12px 22px;
     border-radius: 29px;
     background: #00c8b3;
-    pointer-events: none;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   @media (min-width: 768px) {
@@ -502,6 +503,10 @@
     line-height: 1.14;
     text-align: center;
     text-wrap: balance;
+  }
+
+  .page-new__release-bubble:hover .page-new__release-bubble-text {
+    text-decoration: underline;
   }
 
   @media (min-width: 768px) {
