@@ -8,16 +8,20 @@ demoOverlay: true
 <section id="what" class="page-new__anchor page-new__anchor--what" aria-label="What">
   <div class="page-new__hero">
     <h1 class="page-new__hero-headline">
-      Talk to someone with a different view, and <em>let your guard down</em>.
+      Less Likes,<br /><em>More Understanding</em>
     </h1>
+
+    <p class="page-new__hero-subhead">
+      Connecting people with different views for civil conversations
+    </p>
 
     <div
       class="page-new__hero-previews"
       x-data="{
         slides: [
-          { image: '{{ '/assets/images/hero-mockup-topics.png' | url }}', caption: 'Pick a topic you care about' },
-          { image: '{{ '/assets/images/hero-mockup-match.png' | url }}', caption: 'Match with someone who sees it differently' },
-          { image: '{{ '/assets/images/hero-mockup-chat.png' | url }}', caption: 'Speak freely. An AI moderator defuses tension before it builds' },
+          { image: '{{ '/assets/images/hero-mockup-topics.png' | url }}', captionPrefix: 'Pick a topic ', captionInlineBold: 'you care about', captionSuffix: '', caption: 'Pick a topic you care about' },
+          { image: '{{ '/assets/images/hero-mockup-match.png' | url }}', caption: 'Match with someone with a different view,', captionBold: 'on your schedule' },
+          { image: '{{ '/assets/images/hero-mockup-chat.png' | url }}', captionPrefix: 'Speak freely, express yourself, and ', captionInlineBold: 'feel heard', captionSuffix: ' in a moderated chat', caption: 'Speak freely, express yourself, and feel heard in a moderated chat' },
         ],
         current: 0,
         dragging: false,
@@ -80,7 +84,19 @@ demoOverlay: true
               </div>
               <figcaption class="page-new__hero-caption">
                 <span class="page-new__hero-caption-num" x-text="index + 1" aria-hidden="true"></span>
-                <span class="page-new__hero-caption-text" x-text="slide.caption"></span>
+                <span class="page-new__hero-caption-text">
+                  <template x-if="!slide.captionPrefix">
+                    <span x-text="slide.caption"></span>
+                  </template>
+                  <template x-if="slide.captionPrefix">
+                    <span>
+                      <span x-text="slide.captionPrefix"></span><strong x-text="slide.captionInlineBold"></strong><span x-text="slide.captionSuffix"></span>
+                    </span>
+                  </template>
+                  <template x-if="slide.captionBold">
+                    <strong class="page-new__hero-caption-bold" x-text="slide.captionBold"></strong>
+                  </template>
+                </span>
               </figcaption>
             </figure>
           </template>
@@ -94,7 +110,7 @@ demoOverlay: true
             class="page-new__hero-dot"
             :class="{ 'is-active': current === index }"
             :aria-selected="current === index"
-            :aria-label="`Screen ${index + 1}: ${slide.caption}`"
+            :aria-label="`Screen ${index + 1}: ${slide.caption}${slide.captionBold ? ' ' + slide.captionBold : ''}`"
             role="tab"
             @click="goTo(index)"
           ></button>
@@ -169,7 +185,7 @@ demoOverlay: true
   <div class="page-new__signup">
     <div class="page-new__signup-intro">
       <h2 class="page-new__signup-headline">
-        Sign-up, and <em>think for yourself</em>
+        Follow Our Story
       </h2>
       <p class="page-new__signup-lede">
         Get updates about new features, and find out when we launch for other platforms!

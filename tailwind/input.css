@@ -660,6 +660,24 @@
     text-underline-offset: calc(4pt + 1px);
   }
 
+  .page-new__hero-subhead {
+    max-width: 640px;
+    width: 100%;
+    padding-inline: 25px;
+    color: #4a4a4a;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .page-new__hero-subhead {
+      padding-inline: 0;
+      font-size: 22px;
+    }
+  }
+
   .page-new__hero-previews {
     display: flex;
     flex-direction: column;
@@ -812,6 +830,11 @@
 
   .page-new__hero-caption-text {
     max-width: 100%;
+  }
+
+  .page-new__hero-caption-bold {
+    display: block;
+    font-weight: 700;
   }
 
   .page-new__hero-pagination {
