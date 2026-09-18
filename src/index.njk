@@ -102,15 +102,16 @@ demoOverlay: true
       </div>
     </div>
 
-    <div class="page-new__hero-actions" data-hero-variant="control">
-      <button type="button" class="page-new__demo-cta" data-demo-open data-track-demo="control">
+    <div class="page-new__hero-actions">
+      <button type="button" class="page-new__demo-cta" data-demo-open data-track-demo="hero">
         Try the demo now
       </button>
 
+      {% if site.appStoreLive %}
       <a
-        href="{{ site.appStoreCampaignUrls.control or site.appStoreUrl or '#' }}"
+        href="{{ site.appStoreUrl or '#' }}"
         class="page-new__hero-store"
-        data-track-appstore="control"
+        data-track-appstore="hero"
         {% if site.appStoreUrl and site.appStoreUrl != '#' %}
         target="_blank"
         rel="noopener noreferrer"
@@ -125,70 +126,18 @@ demoOverlay: true
           decoding="async"
         />
       </a>
-    </div>
-
-    <div class="page-new__hero-actions" data-hero-variant="v1" hidden>
-      <a
-        href="{{ site.appStoreCampaignUrls.v1 or site.appStoreUrl or '#' }}"
-        class="page-new__hero-store"
-        data-track-appstore="v1"
-        {% if site.appStoreUrl and site.appStoreUrl != '#' %}
-        target="_blank"
-        rel="noopener noreferrer"
-        {% endif %}
-      >
+      {% else %}
+      <span class="page-new__hero-store page-new__store--disabled" aria-disabled="true">
         <img
           class="page-new__hero-store-badge"
           src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
-          alt="Download on the App Store"
+          alt="Download on the App Store (coming soon)"
           width="200"
           height="67"
           decoding="async"
         />
-      </a>
-
-      <button type="button" class="page-new__demo-ready" data-demo-open data-track-demo="v1" aria-label="Open live demo">
-        <span class="page-new__demo-ready-scene" aria-hidden="true">
-          <img
-            class="page-new__demo-ready-city"
-            src="{{ '/assets/images/demo-ready-city.svg' | url }}"
-            alt=""
-            width="1135"
-            height="843"
-            decoding="async"
-          />
-          <img
-            class="page-new__demo-ready-cloud page-new__demo-ready-cloud--left"
-            src="{{ '/assets/images/demo-ready-cloud-left.png' | url }}"
-            alt=""
-            width="277"
-            height="185"
-            decoding="async"
-          />
-          <img
-            class="page-new__demo-ready-cloud page-new__demo-ready-cloud--right"
-            src="{{ '/assets/images/demo-ready-cloud-right.png' | url }}"
-            alt=""
-            width="167"
-            height="111"
-            decoding="async"
-          />
-        </span>
-
-        <span class="page-new__demo-ready-phone">
-          <img
-            class="page-new__demo-ready-screen"
-            src="{{ '/assets/images/demo-ready-phone.jpg' | url }}"
-            alt=""
-            width="352"
-            height="766"
-            decoding="async"
-          />
-          <span class="page-new__demo-ready-cta">
-            <span class="page-new__demo-ready-cta-label">Live Demo</span>
-          </span>
-        </span>
-      </button>
+      </span>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -211,6 +160,128 @@ demoOverlay: true
           </p>
           <p class="page-new__why-signature">— Spencer Frank, founder</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="page-new__anchor page-new__anchor--join" aria-label="Sign up for updates">
+  <div class="page-new__signup">
+    <div class="page-new__signup-intro">
+      <h2 class="page-new__signup-headline">
+        Sign-up, and <em>think for yourself</em>
+      </h2>
+      <p class="page-new__signup-lede">
+        Get updates about new features, and find out when we launch for other platforms!
+      </p>
+    </div>
+
+    <div class="page-new__signup-form-wrap">
+      <div class="page-new__signup-card">
+        <form
+          class="page-new__signup-form"
+          x-data="{
+            status: 'idle',
+            errorMessage: '',
+            trackInterest(platform, checked) {
+              if (window.posthog && typeof window.posthog.capture === 'function') {
+                window.posthog.capture('platform_interest_toggled', {
+                  platform: platform,
+                  interested: checked,
+                });
+              }
+            },
+            submit(event) {
+              this.status = 'loading';
+              this.errorMessage = '';
+              const form = event.target;
+              const data = new FormData(form);
+              const email = (data.get('email') || '').toString().trim();
+              const interestedAndroid = data.get('interest_android') === 'yes';
+              const interestedWeb = data.get('interest_web') === 'yes';
+
+              try {
+                if (window.posthog && typeof window.posthog.capture === 'function') {
+                  if (email && typeof window.posthog.identify === 'function') {
+                    window.posthog.identify(email, {
+                      email: email,
+                      interested_android: interestedAndroid,
+                      interested_web: interestedWeb,
+                    });
+                  }
+                  window.posthog.capture('newsletter_signup', {
+                    email: email,
+                    interested_android: interestedAndroid,
+                    interested_web: interestedWeb,
+                  });
+                }
+                if (window.fbq) fbq('track', 'Lead');
+                this.status = 'success';
+                form.reset();
+              } catch (e) {
+                this.errorMessage = 'Something went wrong. Please try again.';
+                this.status = 'error';
+              }
+            }
+          }"
+          @submit.prevent="submit($event)"
+        >
+          <template x-if="status === 'success'">
+            <p class="page-new__signup-message page-new__signup-message--success">
+              Thanks — you're on the list. We'll be in touch with updates.
+            </p>
+          </template>
+
+          <template x-if="status !== 'success'">
+            <div class="page-new__signup-fields page-new__signup-fields--newsletter">
+              <div class="page-new__signup-field">
+                <label class="page-new__signup-label" for="signup-email">Your Email</label>
+                <input
+                  id="signup-email"
+                  class="page-new__signup-input"
+                  type="email"
+                  name="email"
+                  maxlength="128"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+
+              <label class="page-new__signup-interest">
+                <input
+                  class="page-new__signup-interest-check"
+                  type="checkbox"
+                  name="interest_android"
+                  value="yes"
+                  @change="trackInterest('android', $event.target.checked)"
+                />
+                <span>I am interested in an Android version</span>
+              </label>
+
+              <label class="page-new__signup-interest">
+                <input
+                  class="page-new__signup-interest-check"
+                  type="checkbox"
+                  name="interest_web"
+                  value="yes"
+                  @change="trackInterest('web', $event.target.checked)"
+                />
+                <span>I am interested in a web version</span>
+              </label>
+
+              <template x-if="status === 'error'">
+                <p class="page-new__signup-message page-new__signup-message--error" x-text="errorMessage"></p>
+              </template>
+
+              <div class="page-new__signup-submit-wrap">
+                <button class="page-new__signup-submit" type="submit" :disabled="status === 'loading'">
+                  <span x-show="status !== 'loading'">Get Updates</span>
+                  <span x-show="status === 'loading'">Sending…</span>
+                </button>
+              </div>
+            </div>
+          </template>
+        </form>
       </div>
     </div>
   </div>
@@ -273,15 +344,6 @@ demoOverlay: true
 
 <script>
   (function () {
-    var FLAG_KEY = 'homepage-hero';
-    var applied = false;
-    var resolvedVariant = 'control';
-    var appStoreCampaignUrls = {
-      control: "{{ (site.appStoreCampaignUrls.control or site.appStoreUrl or '#') | safe }}",
-      v1: "{{ (site.appStoreCampaignUrls.v1 or site.appStoreUrl or '#') | safe }}",
-      direct: "{{ (site.appStoreCampaignUrls.direct or site.appStoreUrl or '#') | safe }}"
-    };
-
     function isIOS() {
       var ua = navigator.userAgent || "";
       var platform = navigator.platform || "";
@@ -289,61 +351,24 @@ demoOverlay: true
       return /iPad|iPhone|iPod/.test(ua) || (platform === "MacIntel" && maxTouch > 1);
     }
 
-    var eligible = isIOS();
-
-    function applyVariant(variant) {
-      if (applied) return;
-
-      if (variant === 'direct' && appStoreCampaignUrls.direct && appStoreCampaignUrls.direct !== '#') {
-        applied = true;
-        if (window.posthog) {
-          posthog.capture('app_store_click', { variant: 'direct', homepage_hero: 'direct', location: 'redirect', device_os: 'iOS' });
-        }
-        window.location.replace(appStoreCampaignUrls.direct);
-        return;
-      }
-
-      resolvedVariant = variant === 'v1' ? 'v1' : 'control';
-      applied = true;
-      document.querySelectorAll('[data-hero-variant]').forEach(function (el) {
-        el.hidden = el.getAttribute('data-hero-variant') !== resolvedVariant;
-      });
-
-      // These badges are shared across variants, so their href must follow whichever
-      // variant actually resolved (unlike the hero badges, which are already scoped).
-      ['nav', 'demo-overlay'].forEach(function (loc) {
-        var el = document.querySelector('[data-track-appstore="' + loc + '"]');
-        if (el) el.setAttribute('href', appStoreCampaignUrls[resolvedVariant]);
-      });
-    }
-
-    var SHARED_APPSTORE_LOCATIONS = ['nav', 'demo-overlay'];
+    var deviceOs = isIOS() ? 'iOS' : 'other';
 
     document.addEventListener('click', function (e) {
       var appStoreEl = e.target.closest('[data-track-appstore]');
-      if (appStoreEl) {
-        var clickLocation = appStoreEl.getAttribute('data-track-appstore');
-        var variant = SHARED_APPSTORE_LOCATIONS.indexOf(clickLocation) !== -1 ? resolvedVariant : clickLocation;
-        if (window.posthog) posthog.capture('app_store_click', { variant: variant, homepage_hero: variant, location: clickLocation, device_os: eligible ? 'iOS' : 'other' });
+      if (appStoreEl && window.posthog) {
+        posthog.capture('app_store_click', {
+          location: appStoreEl.getAttribute('data-track-appstore'),
+          device_os: deviceOs,
+        });
       }
 
       var demoEl = e.target.closest('[data-track-demo]');
-      if (demoEl) {
-        var demoVariant = demoEl.getAttribute('data-track-demo');
-        if (window.posthog) posthog.capture('demo_open', { variant: demoVariant, homepage_hero: demoVariant, device_os: eligible ? 'iOS' : 'other' });
+      if (demoEl && window.posthog) {
+        posthog.capture('demo_open', {
+          location: demoEl.getAttribute('data-track-demo'),
+          device_os: deviceOs,
+        });
       }
     });
-
-    // This experiment only targets iOS visitors — everyone else always sees control.
-    if (!eligible) return;
-
-    if (window.posthog) {
-      posthog.onFeatureFlags(function () {
-        applyVariant(posthog.getFeatureFlag(FLAG_KEY));
-      });
-    }
-
-    // Fallback: if PostHog hasn't resolved flags shortly, show control so the page isn't blank.
-    setTimeout(function () { applyVariant(resolvedVariant); }, 1200);
   })();
 </script>

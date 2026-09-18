@@ -2,8 +2,9 @@
   class="page-new__nav"
   x-data="{
     active: 'what',
+    menuOpen: false,
     init() {
-      const sections = ['what', 'founder-note'];
+      const sections = ['what', 'founder-note', 'join'];
       const observer = new IntersectionObserver(
         (entries) => {
           const visible = entries
@@ -19,10 +20,11 @@
       });
     }
   }"
+  @keydown.escape.window="menuOpen = false"
   aria-label="Primary"
 >
   <div class="page-new__nav-inner">
-    <a href="#what" class="page-new__nav-brand">
+    <a href="#what" class="page-new__nav-brand" @click="menuOpen = false">
       <img src="{{ '/assets/images/dialog_lab_brand.svg' | url }}" alt="Dialog Lab" width="194" height="86" />
     </a>
 
@@ -45,24 +47,106 @@
       </a>
     </div>
 
-    <a
-      href="{{ site.appStoreUrl or '#' }}"
-      class="page-new__nav-cta"
-      data-track-appstore="nav"
-      {% if site.appStoreUrl and site.appStoreUrl != '#' %}
-      target="_blank"
-      rel="noopener noreferrer"
-      {% endif %}
-    >
-      <img
-        class="page-new__nav-cta-badge"
-        src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
-        alt="Download on the App Store"
-        width="120"
-        height="40"
-        decoding="async"
-      />
-    </a>
+    <div class="page-new__nav-actions" @click.outside="menuOpen = false">
+      <div class="page-new__nav-cta-wrap">
+        {% if site.appStoreLive %}
+        <a
+          href="{{ site.appStoreUrl or '#' }}"
+          class="page-new__nav-cta"
+          data-track-appstore="nav"
+          {% if site.appStoreUrl and site.appStoreUrl != '#' %}
+          target="_blank"
+          rel="noopener noreferrer"
+          {% endif %}
+        >
+          <img
+            class="page-new__nav-cta-badge"
+            src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+            alt="Download on the App Store"
+            width="120"
+            height="40"
+            decoding="async"
+          />
+        </a>
+        {% else %}
+        <span class="page-new__nav-cta page-new__store--disabled" aria-disabled="true">
+          <img
+            class="page-new__nav-cta-badge"
+            src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+            alt="Download on the App Store (coming soon)"
+            width="120"
+            height="40"
+            decoding="async"
+          />
+        </span>
+        {% endif %}
+
+        {% if page.url == '/' and site.releaseAnnouncement %}
+        <div class="page-new__release-bubble" role="status">
+          <span class="page-new__release-bubble-pointer" aria-hidden="true"></span>
+          <p class="page-new__release-bubble-text">{{ site.releaseAnnouncement }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <button
+        type="button"
+        class="page-new__nav-menu-btn"
+        @click="menuOpen = !menuOpen"
+        :aria-expanded="menuOpen"
+        aria-controls="page-new-nav-menu"
+      >
+        <span class="sr-only" x-text="menuOpen ? 'Close menu' : 'Open menu'"></span>
+        <svg class="page-new__nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <g x-show="!menuOpen">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+          </g>
+          <g x-show="menuOpen" x-cloak>
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </g>
+        </svg>
+      </button>
+
+      <div
+        id="page-new-nav-menu"
+        class="page-new__nav-menu"
+        x-show="menuOpen"
+        x-cloak
+        x-transition:enter="page-new__nav-menu-enter"
+        x-transition:enter-start="page-new__nav-menu-enter-start"
+        x-transition:enter-end="page-new__nav-menu-enter-end"
+        x-transition:leave="page-new__nav-menu-leave"
+        x-transition:leave-start="page-new__nav-menu-leave-start"
+        x-transition:leave-end="page-new__nav-menu-leave-end"
+        role="navigation"
+        aria-label="Mobile"
+      >
+        <a
+          href="#founder-note"
+          class="page-new__nav-menu-link"
+          :class="{ 'is-active': active === 'founder-note' }"
+          @click="menuOpen = false"
+        >
+          Why Dialog Lab
+        </a>
+        <a
+          href="{{ '/support/' | url }}"
+          class="page-new__nav-menu-link"
+          @click="menuOpen = false"
+        >
+          Help Center
+        </a>
+
+        <div class="page-new__nav-menu-legal">
+          <a href="{{ '/privacypolicy/' | url }}" class="page-new__nav-menu-legal-link" @click="menuOpen = false">
+            Privacy Policy
+          </a>
+          <a href="{{ '/termsofuse/' | url }}" class="page-new__nav-menu-legal-link" @click="menuOpen = false">
+            Terms of Use
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="page-new__nav-edge" aria-hidden="true"></div>

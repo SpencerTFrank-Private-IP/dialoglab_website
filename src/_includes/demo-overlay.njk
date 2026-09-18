@@ -50,15 +50,27 @@
         </div>
 
         {% if site.showAppStoreBadge %}
-        <a class="page-demo__badge" href="{{ site.appStoreUrl or '#' }}" data-track-appstore="demo-overlay">
-          <img
-            src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 1.svg' | url }}"
-            alt="Download on the App Store"
-            width="140"
-            height="47"
-            decoding="async"
-          />
-        </a>
+          {% if site.appStoreLive %}
+          <a class="page-demo__badge" href="{{ site.appStoreUrl or '#' }}" data-track-appstore="demo-overlay">
+            <img
+              src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 1.svg' | url }}"
+              alt="Download on the App Store"
+              width="140"
+              height="47"
+              decoding="async"
+            />
+          </a>
+          {% else %}
+          <span class="page-demo__badge page-new__store--disabled" aria-disabled="true">
+            <img
+              src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917 1.svg' | url }}"
+              alt="Download on the App Store (coming soon)"
+              width="140"
+              height="47"
+              decoding="async"
+            />
+          </span>
+          {% endif %}
         {% endif %}
       </aside>
     </div>
