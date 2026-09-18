@@ -3,7 +3,7 @@
   x-data="{
     active: 'what',
     init() {
-      const sections = ['what', 'why', 'founder-note', 'join'];
+      const sections = ['what', 'founder-note', 'join'];
       const observer = new IntersectionObserver(
         (entries) => {
           const visible = entries
@@ -28,15 +28,6 @@
 
     <div class="page-new__nav-links" role="navigation" aria-label="Sections">
       <a
-        href="#why"
-        class="page-new__nav-link"
-        :class="{ 'is-active': active === 'why' }"
-        :aria-current="active === 'why' ? 'page' : false"
-      >
-        <span class="page-new__nav-link-label">AI Moderator</span>
-        <span class="page-new__nav-link-rule" aria-hidden="true"></span>
-      </a>
-      <a
         href="#founder-note"
         class="page-new__nav-link"
         :class="{ 'is-active': active === 'founder-note' }"
@@ -49,7 +40,7 @@
         href="{{ '/support/' | url }}"
         class="page-new__nav-link"
       >
-        <span class="page-new__nav-link-label">Support</span>
+        <span class="page-new__nav-link-label">Help Center</span>
         <span class="page-new__nav-link-rule" aria-hidden="true"></span>
       </a>
     </div>
@@ -59,6 +50,7 @@
       <a
         href="{{ site.appStoreUrl or '#' }}"
         class="page-new__nav-cta"
+        data-track-appstore="nav"
         {% if site.appStoreUrl and site.appStoreUrl != '#' %}
         target="_blank"
         rel="noopener noreferrer"

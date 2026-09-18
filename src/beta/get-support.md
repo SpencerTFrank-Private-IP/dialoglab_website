@@ -42,7 +42,7 @@ Include your app version (shown in **Profile → Account Preferences**) in the f
 
 ## Email the team
 
-For general questions or issues outside a specific conversation, email [spencer@spencerfrank.com](mailto:spencer@spencerfrank.com).
+For general questions or issues outside a specific conversation, email [spencer@joindialoglab.com](mailto:spencer@joindialoglab.com).
 
 Include your app version and a brief description of the problem.
 
