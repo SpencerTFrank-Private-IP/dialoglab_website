@@ -1,0 +1,10 @@
+name = "dialoglab-subscribe"
+main = "subscribe.js"
+compatibility_date = "2026-09-01"
+
+# Add a route so this Worker answers requests at a subdomain of your domain,
+# e.g. https://api.joindialoglab.com/subscribe
+# Uncomment and fill in once the domain is on Cloudflare (see setup notes):
+# routes = [
+#   { pattern = "api.joindialoglab.com/subscribe", custom_domain = true }
+# ]

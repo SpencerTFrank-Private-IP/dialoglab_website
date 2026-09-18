@@ -191,7 +191,7 @@ demoOverlay: true
                 });
               }
             },
-            submit(event) {
+            async submit(event) {
               this.status = 'loading';
               this.errorMessage = '';
               const form = event.target;
@@ -201,6 +201,29 @@ demoOverlay: true
               const interestedWeb = data.get('interest_web') === 'yes';
 
               try {
+                let res;
+                try {
+                  res = await fetch('https://dialoglab-subscribe.dialoglab.workers.dev/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      email: email,
+                      interest_android: interestedAndroid,
+                      interest_web: interestedWeb,
+                    }),
+                  });
+                } catch (networkError) {
+                  throw new Error('Something went wrong. Please try again.');
+                }
+
+                if (!res.ok) {
+                  const body = await res.json().catch(() => ({}));
+                  const message = res.status === 400 && body.error
+                    ? body.error
+                    : 'Something went wrong. Please try again.';
+                  throw new Error(message);
+                }
+
                 if (window.posthog && typeof window.posthog.capture === 'function') {
                   if (email && typeof window.posthog.identify === 'function') {
                     window.posthog.identify(email, {
@@ -219,7 +242,9 @@ demoOverlay: true
                 this.status = 'success';
                 form.reset();
               } catch (e) {
-                this.errorMessage = 'Something went wrong. Please try again.';
+                this.errorMessage = e instanceof Error && e.message
+                  ? e.message
+                  : 'Something went wrong. Please try again.';
                 this.status = 'error';
               }
             }
