@@ -310,9 +310,138 @@
     }
   }
 
+  .page-new__nav-actions {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+  }
+
   .page-new__nav-cta-wrap {
     position: relative;
     flex-shrink: 0;
+  }
+
+  .page-new__nav-menu-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #3e0946;
+    cursor: pointer;
+  }
+
+  .page-new__nav-menu-btn:hover {
+    color: var(--color-brand-dark);
+  }
+
+  .page-new__nav-menu-btn:focus-visible {
+    outline: 2px solid #4f1658;
+    outline-offset: 3px;
+  }
+
+  .page-new__nav-menu-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (min-width: 768px) {
+    .page-new__nav-menu-btn {
+      display: none;
+    }
+  }
+
+  .page-new__nav-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: min(280px, calc(100vw - 32px));
+    padding: 16px 18px 14px;
+    border: 1px solid #e7e7e7;
+    border-radius: 16px;
+    background: rgb(255 250 255 / 96%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgb(62 9 70 / 10%);
+  }
+
+  .page-new__nav-menu-enter {
+    transition: opacity 150ms ease, transform 150ms ease;
+  }
+
+  .page-new__nav-menu-enter-start {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  .page-new__nav-menu-enter-end {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .page-new__nav-menu-leave {
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+
+  .page-new__nav-menu-leave-start {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .page-new__nav-menu-leave-end {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  .page-new__nav-menu-link {
+    color: #480c43;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+    text-decoration: none;
+    padding: 10px 4px;
+  }
+
+  .page-new__nav-menu-link:hover,
+  .page-new__nav-menu-link.is-active {
+    color: #4f1658;
+  }
+
+  .page-new__nav-menu-legal {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #e7e7e7;
+  }
+
+  .page-new__nav-menu-legal-link {
+    color: #3e0946;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+    padding: 2px 4px;
+    opacity: 0.75;
+  }
+
+  .page-new__nav-menu-legal-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   /* Teal speech bubble tipped off the App Store badge */
