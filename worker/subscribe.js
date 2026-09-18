@@ -74,14 +74,23 @@ export default {
       }
     );
 
+    let beehiivBody = null;
+    try {
+      beehiivBody = await beehiivRes.json();
+    } catch (e) {}
+
     if (!beehiivRes.ok) {
-      let detail = "";
-      try {
-        detail = JSON.stringify(await beehiivRes.json());
-      } catch (e) {}
-      console.error("beehiiv subscribe failed", beehiivRes.status, detail);
+      console.error("beehiiv subscribe failed", beehiivRes.status, JSON.stringify(beehiivBody));
       return json({ error: "Something went wrong. Please try again." }, 502, origin);
     }
+
+    console.log(
+      "beehiiv subscribe ok",
+      email,
+      beehiivBody && beehiivBody.data
+        ? `id=${beehiivBody.data.id} status=${beehiivBody.data.status}`
+        : JSON.stringify(beehiivBody)
+    );
 
     return json({ ok: true }, 200, origin);
   },
