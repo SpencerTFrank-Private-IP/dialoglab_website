@@ -5,5 +5,7 @@
   "demoUrl": "https://dl-web-demo.fly.dev/",
   "appStoreUrl": "https://apps.apple.com/us/app/dialog-lab/id6779762271",
   "appStoreId": "6779762271",
-  "showAppStoreBadge": true
+  "showAppStoreBadge": true,
+  "appStoreLive": false,
+  "releaseAnnouncement": "Launching September 24th for iOS!"
 }

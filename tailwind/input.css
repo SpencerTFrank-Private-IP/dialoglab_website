@@ -75,6 +75,17 @@
     }
   }
 
+  /* Extra room when the launch bubble hangs below the nav */
+  .page-new:has(.page-new__release-bubble) {
+    scroll-padding-top: calc(64px + 32px + 72px);
+  }
+
+  @media (min-width: 768px) {
+    .page-new:has(.page-new__release-bubble) {
+      scroll-padding-top: calc(86px + 48px + 96px);
+    }
+  }
+
   @media (max-width: 767px) {
     .page-new {
       --page-bg-parallax-max: 48px;
@@ -145,6 +156,16 @@
     }
   }
 
+  .page-new:has(.page-new__release-bubble) .page-new__content {
+    padding-top: calc(64px + 32px + 72px);
+  }
+
+  @media (min-width: 768px) {
+    .page-new:has(.page-new__release-bubble) .page-new__content {
+      padding-top: calc(86px + 48px + 96px);
+    }
+  }
+
   .page-new__nav {
     position: fixed;
     top: 0;
@@ -157,6 +178,7 @@
     background: rgb(255 255 255 / 60%);
     -webkit-backdrop-filter: blur(10pt);
     backdrop-filter: blur(10pt);
+    overflow: visible;
     box-shadow:
       inset 0 -1px 0 rgb(255 255 255 / 75%),
       inset 0 -1px 0 rgb(79 22 88 / var(--nav-edge-nav-dark));
@@ -286,6 +308,87 @@
       transform: none;
       margin-top: calc(-19px + 6pt);
     }
+  }
+
+  .page-new__nav-cta-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Teal speech bubble tipped off the App Store badge */
+  .page-new__release-bubble {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 6px);
+    right: 0;
+    left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    max-width: min(464px, calc(100vw - 32px));
+    min-height: 48px;
+    padding: 12px 22px;
+    border-radius: 29px;
+    background: #00c8b3;
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .page-new__release-bubble {
+      top: calc(100% + 8px);
+      min-height: 73px;
+      padding: 18px 36px;
+    }
+  }
+
+  .page-new__release-bubble-pointer {
+    position: absolute;
+    top: -10px;
+    right: 42px;
+    left: auto;
+    width: 28px;
+    height: 28px;
+    background: #00c8b3;
+    transform: rotate(45deg);
+    border-radius: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .page-new__release-bubble-pointer {
+      top: -14px;
+      right: 48px;
+      width: 43px;
+      height: 43px;
+    }
+  }
+
+  .page-new__release-bubble-text {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.14;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 768px) {
+    .page-new__release-bubble-text {
+      font-size: 21px;
+    }
+  }
+
+  .page-new__store--disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .page-new__store--disabled:hover {
+    opacity: 0.5;
   }
 
   .page-new__nav-links {
@@ -1011,6 +1114,20 @@
     }
   }
 
+  .page-new:has(.page-new__release-bubble) .page-new__anchor--what,
+  .page-new:has(.page-new__release-bubble) .page-new__anchor--why,
+  .page-new:has(.page-new__release-bubble) .page-new__anchor--join {
+    scroll-margin-top: calc(64px + 32px + 72px);
+  }
+
+  @media (min-width: 768px) {
+    .page-new:has(.page-new__release-bubble) .page-new__anchor--what,
+    .page-new:has(.page-new__release-bubble) .page-new__anchor--why,
+    .page-new:has(.page-new__release-bubble) .page-new__anchor--join {
+      scroll-margin-top: calc(86px + 48px + 96px);
+    }
+  }
+
   .page-new__anchor--why {
     padding-top: 96px;
   }
@@ -1209,6 +1326,22 @@
     text-underline-offset: calc(4pt + 1px);
   }
 
+  .page-new__signup-lede {
+    width: 100%;
+    max-width: 803px;
+    margin: 0;
+    color: #3e0946;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 1100px) {
+    .page-new__signup-lede {
+      font-size: 18px;
+    }
+  }
+
   .page-new__signup-prose {
     display: flex;
     flex-direction: column;
@@ -1277,11 +1410,61 @@
     width: 100%;
   }
 
+  .page-new__signup-fields--newsletter {
+    gap: 24px;
+  }
+
   .page-new__signup-field {
     display: flex;
     flex-direction: column;
     gap: 9px;
     width: 100%;
+  }
+
+  .page-new__signup-interest {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    color: #3e0946;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  @media (min-width: 1100px) {
+    .page-new__signup-interest {
+      font-size: 18px;
+    }
+  }
+
+  .page-new__signup-interest-check {
+    appearance: none;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 25px;
+    height: 23px;
+    margin: 0;
+    border: 3px solid #5e0099;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .page-new__signup-interest-check:checked {
+    background-color: #4f1658;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5 6.5 11.5 12.5 4.5' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
+    border-color: #4f1658;
+  }
+
+  .page-new__signup-interest-check:focus-visible {
+    outline: 2px solid #4f1658;
+    outline-offset: 2px;
   }
 
   .page-new__signup-label {

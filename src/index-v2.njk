@@ -106,6 +106,7 @@ demoOverlay: true
       </div>
 
       <div class="page-new__hero-actions">
+        {% if site.appStoreLive %}
         <a
           href="{{ site.appStoreUrl or '#' }}"
           class="page-new__hero-store"
@@ -123,6 +124,18 @@ demoOverlay: true
             decoding="async"
           />
         </a>
+        {% else %}
+        <span class="page-new__hero-store page-new__store--disabled" aria-disabled="true">
+          <img
+            class="page-new__hero-store-badge"
+            src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+            alt="Download on the App Store (coming soon)"
+            width="200"
+            height="67"
+            decoding="async"
+          />
+        </span>
+        {% endif %}
 
         <button type="button" class="page-new__demo-ready" data-demo-open aria-label="Open live demo">
           <span class="page-new__demo-ready-scene" aria-hidden="true">
@@ -232,6 +245,7 @@ demoOverlay: true
               <p class="page-new__demo-inline-prompt-text" data-demo-prompt-text>Click a topic</p>
             </div>
 
+            {% if site.appStoreLive %}
             <a
               href="{{ site.appStoreUrl or '#' }}"
               class="page-new__hero-store"
@@ -249,6 +263,18 @@ demoOverlay: true
                 decoding="async"
               />
             </a>
+            {% else %}
+            <span class="page-new__hero-store page-new__store--disabled" aria-disabled="true">
+              <img
+                class="page-new__hero-store-badge page-new__hero-store-badge--inline"
+                src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+                alt="Download on the App Store (coming soon)"
+                width="250"
+                height="83"
+                decoding="async"
+              />
+            </span>
+            {% endif %}
           </div>
         </div>
       </div>

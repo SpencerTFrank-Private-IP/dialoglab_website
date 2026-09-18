@@ -107,6 +107,7 @@ demoOverlay: true
         Try the demo now
       </button>
 
+      {% if site.appStoreLive %}
       <a
         href="{{ site.appStoreUrl or '#' }}"
         class="page-new__hero-store"
@@ -124,6 +125,18 @@ demoOverlay: true
           decoding="async"
         />
       </a>
+      {% else %}
+      <span class="page-new__hero-store page-new__store--disabled" aria-disabled="true">
+        <img
+          class="page-new__hero-store-badge"
+          src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+          alt="Download on the App Store (coming soon)"
+          width="200"
+          height="67"
+          decoding="async"
+        />
+      </span>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -172,6 +185,128 @@ demoOverlay: true
           </p>
           <p class="page-new__why-signature">— Spencer Frank, founder</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="page-new__anchor page-new__anchor--join" aria-label="Sign up for updates">
+  <div class="page-new__signup">
+    <div class="page-new__signup-intro">
+      <h2 class="page-new__signup-headline">
+        Sign-up, and <em>think for yourself</em>
+      </h2>
+      <p class="page-new__signup-lede">
+        Get updates about new features, and find out when we launch for other platforms!
+      </p>
+    </div>
+
+    <div class="page-new__signup-form-wrap">
+      <div class="page-new__signup-card">
+        <form
+          class="page-new__signup-form"
+          x-data="{
+            status: 'idle',
+            errorMessage: '',
+            trackInterest(platform, checked) {
+              if (window.posthog && typeof window.posthog.capture === 'function') {
+                window.posthog.capture('platform_interest_toggled', {
+                  platform: platform,
+                  interested: checked,
+                });
+              }
+            },
+            submit(event) {
+              this.status = 'loading';
+              this.errorMessage = '';
+              const form = event.target;
+              const data = new FormData(form);
+              const email = (data.get('email') || '').toString().trim();
+              const interestedAndroid = data.get('interest_android') === 'yes';
+              const interestedWeb = data.get('interest_web') === 'yes';
+
+              try {
+                if (window.posthog && typeof window.posthog.capture === 'function') {
+                  if (email && typeof window.posthog.identify === 'function') {
+                    window.posthog.identify(email, {
+                      email: email,
+                      interested_android: interestedAndroid,
+                      interested_web: interestedWeb,
+                    });
+                  }
+                  window.posthog.capture('newsletter_signup', {
+                    email: email,
+                    interested_android: interestedAndroid,
+                    interested_web: interestedWeb,
+                  });
+                }
+                if (window.fbq) fbq('track', 'Lead');
+                this.status = 'success';
+                form.reset();
+              } catch (e) {
+                this.errorMessage = 'Something went wrong. Please try again.';
+                this.status = 'error';
+              }
+            }
+          }"
+          @submit.prevent="submit($event)"
+        >
+          <template x-if="status === 'success'">
+            <p class="page-new__signup-message page-new__signup-message--success">
+              Thanks — you're on the list. We'll be in touch with updates.
+            </p>
+          </template>
+
+          <template x-if="status !== 'success'">
+            <div class="page-new__signup-fields page-new__signup-fields--newsletter">
+              <div class="page-new__signup-field">
+                <label class="page-new__signup-label" for="signup-email">Your Email</label>
+                <input
+                  id="signup-email"
+                  class="page-new__signup-input"
+                  type="email"
+                  name="email"
+                  maxlength="128"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+
+              <label class="page-new__signup-interest">
+                <input
+                  class="page-new__signup-interest-check"
+                  type="checkbox"
+                  name="interest_android"
+                  value="yes"
+                  @change="trackInterest('android', $event.target.checked)"
+                />
+                <span>I am interested in an Android version</span>
+              </label>
+
+              <label class="page-new__signup-interest">
+                <input
+                  class="page-new__signup-interest-check"
+                  type="checkbox"
+                  name="interest_web"
+                  value="yes"
+                  @change="trackInterest('web', $event.target.checked)"
+                />
+                <span>I am interested in a web version</span>
+              </label>
+
+              <template x-if="status === 'error'">
+                <p class="page-new__signup-message page-new__signup-message--error" x-text="errorMessage"></p>
+              </template>
+
+              <div class="page-new__signup-submit-wrap">
+                <button class="page-new__signup-submit" type="submit" :disabled="status === 'loading'">
+                  <span x-show="status !== 'loading'">Get Updates</span>
+                  <span x-show="status === 'loading'">Sending…</span>
+                </button>
+              </div>
+            </div>
+          </template>
+        </form>
       </div>
     </div>
   </div>

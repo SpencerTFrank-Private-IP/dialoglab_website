@@ -3,7 +3,7 @@
   x-data="{
     active: 'what',
     init() {
-      const sections = ['what', 'why', 'founder-note'];
+      const sections = ['what', 'why', 'founder-note', 'join'];
       const observer = new IntersectionObserver(
         (entries) => {
           const visible = entries
@@ -54,23 +54,45 @@
       </a>
     </div>
 
-    <a
-      href="{{ site.appStoreUrl or '#' }}"
-      class="page-new__nav-cta"
-      {% if site.appStoreUrl and site.appStoreUrl != '#' %}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div class="page-new__nav-cta-wrap">
+      {% if site.appStoreLive %}
+      <a
+        href="{{ site.appStoreUrl or '#' }}"
+        class="page-new__nav-cta"
+        {% if site.appStoreUrl and site.appStoreUrl != '#' %}
+        target="_blank"
+        rel="noopener noreferrer"
+        {% endif %}
+      >
+        <img
+          class="page-new__nav-cta-badge"
+          src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+          alt="Download on the App Store"
+          width="120"
+          height="40"
+          decoding="async"
+        />
+      </a>
+      {% else %}
+      <span class="page-new__nav-cta page-new__store--disabled" aria-disabled="true">
+        <img
+          class="page-new__nav-cta-badge"
+          src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
+          alt="Download on the App Store (coming soon)"
+          width="120"
+          height="40"
+          decoding="async"
+        />
+      </span>
       {% endif %}
-    >
-      <img
-        class="page-new__nav-cta-badge"
-        src="{{ '/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg' | url }}"
-        alt="Download on the App Store"
-        width="120"
-        height="40"
-        decoding="async"
-      />
-    </a>
+
+      {% if page.url == '/' and site.releaseAnnouncement %}
+      <div class="page-new__release-bubble" role="status">
+        <span class="page-new__release-bubble-pointer" aria-hidden="true"></span>
+        <p class="page-new__release-bubble-text">{{ site.releaseAnnouncement }}</p>
+      </div>
+      {% endif %}
+    </div>
   </div>
 
   <div class="page-new__nav-edge" aria-hidden="true"></div>
