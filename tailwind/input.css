@@ -837,6 +837,10 @@
     font-weight: 700;
   }
 
+  .page-new__hero-caption-bold-inline {
+    font-weight: 700;
+  }
+
   .page-new__hero-pagination {
     display: flex;
     gap: 8px;

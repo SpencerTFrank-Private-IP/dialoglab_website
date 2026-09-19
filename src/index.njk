@@ -19,9 +19,9 @@ demoOverlay: true
       class="page-new__hero-previews"
       x-data="{
         slides: [
-          { image: '{{ '/assets/images/hero-mockup-topics.png' | url }}', captionPrefix: 'Pick a topic ', captionInlineBold: 'you care about', captionSuffix: '', caption: 'Pick a topic you care about' },
+          { image: '{{ '/assets/images/hero-mockup-topics.png' | url }}', captionParts: [{ text: 'Pick a topic ' }, { text: 'you care about', bold: true }], caption: 'Pick a topic you care about' },
           { image: '{{ '/assets/images/hero-mockup-match.png' | url }}', caption: 'Match with someone with a different view,', captionBold: 'on your schedule' },
-          { image: '{{ '/assets/images/hero-mockup-chat.png' | url }}', captionPrefix: 'Speak freely, express yourself, and ', captionInlineBold: 'feel heard', captionSuffix: ' in a moderated chat', caption: 'Speak freely, express yourself, and feel heard in a moderated chat' },
+          { image: '{{ '/assets/images/hero-mockup-chat.png' | url }}', captionParts: [{ text: 'Speak freely, and ' }, { text: 'feel heard', bold: true }, { text: ' in a ' }, { text: 'private', bold: true }, { text: ', moderated chat' }], caption: 'Speak freely, and feel heard in a private, moderated chat' },
         ],
         current: 0,
         dragging: false,
@@ -85,13 +85,11 @@ demoOverlay: true
               <figcaption class="page-new__hero-caption">
                 <span class="page-new__hero-caption-num" x-text="index + 1" aria-hidden="true"></span>
                 <span class="page-new__hero-caption-text">
-                  <template x-if="!slide.captionPrefix">
+                  <template x-if="!slide.captionParts">
                     <span x-text="slide.caption"></span>
                   </template>
-                  <template x-if="slide.captionPrefix">
-                    <span>
-                      <span x-text="slide.captionPrefix"></span><strong x-text="slide.captionInlineBold"></strong><span x-text="slide.captionSuffix"></span>
-                    </span>
+                  <template x-if="slide.captionParts">
+                    <span><template x-for="(part, partIndex) in slide.captionParts" :key="partIndex"><span x-text="part.text" :class="{ 'page-new__hero-caption-bold-inline': part.bold }"></span></template></span>
                   </template>
                   <template x-if="slide.captionBold">
                     <strong class="page-new__hero-caption-bold" x-text="slide.captionBold"></strong>
